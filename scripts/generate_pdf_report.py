@@ -4,6 +4,7 @@
 
 import json
 import os
+import traceback
 from datetime import datetime
 from fpdf import FPDF
 
@@ -44,44 +45,50 @@ def update_history(new_urls):
 
 # Generate PDF report
 def generate_pdf_report():
-    # Load data
-    with open(NEWS_FEED_PATH, "r") as f:
-        data = json.load(f)
-    
-    history = load_history()
-    new_articles = [
-        article for article in data["news_feed"]
-        if article["url"] not in history
-    ]
-    
-    if not new_articles:
-        print("No new articles to report.")
-        return
-    
-    # Create PDF
-    pdf = PDFReport()
-    pdf.add_page()
-    
-    for article in new_articles:
-        pdf.chapter_title(article["title"])
-        pdf.chapter_body(
-            f"Source: {article['source']}\n"
-            f"URL: {article['url']}\n"
-            f"Date: {article['date']}\n"
-            f"Tag: {article['tag']}\n\n"
-            f"Snippet: {article['snippet']}"
-        )
-    
-    # Save PDF
-    os.makedirs(REPORTS_DIR, exist_ok=True)
-    pdf_path = os.path.join(REPORTS_DIR, f"ai_news_report_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf")
-    pdf.output(pdf_path)
-    
-    # Update history
-    update_history([article["url"] for article in new_articles])
-    
-    print(f"PDF report generated: {pdf_path}")
-    return pdf_path
+    try:
+        # Load data
+        with open(NEWS_FEED_PATH, "r") as f:
+            data = json.load(f)
+        
+        history = load_history()
+        new_articles = [
+            article for article in data["news_feed"]
+            if article["url"] not in history
+        ]
+        
+        if not new_articles:
+            print("No new articles to report.")
+            return
+        
+        # Create PDF
+        pdf = PDFReport()
+        pdf.add_page()
+        
+        for article in new_articles:
+            pdf.chapter_title(article["title"])
+            pdf.chapter_body(
+                f"Source: {article['source']}\n"
+                f"URL: {article['url']}\n"
+                f"Date: {article['date']}\n"
+                f"Tag: {article['tag']}\n\n"
+                f"Snippet: {article['snippet']}"
+            )
+        
+        # Save PDF
+        os.makedirs(REPORTS_DIR, exist_ok=True)
+        pdf_path = os.path.join(REPORTS_DIR, f"ai_news_report_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf")
+        pdf.output(pdf_path)
+        
+        # Update history
+        update_history([article["url"] for article in new_articles])
+        
+        print(f"PDF report generated: {pdf_path}")
+        return pdf_path
+        
+    except Exception as e:
+        print(f"ERROR: {str(e)}")
+        traceback.print_exc()
+        raise
 
 if __name__ == "__main__":
     generate_pdf_report()
