@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "generated_at": "2026-03-10T03:47:13.584480+00:00",
+    "article_count": 17,
+    "status": "ok"
+  },
+  "articles": [
+    {
+      "id": 47307169,
+      "title": "Show HN: VS Code Agent Kanban: Task Management for the AI-Assisted Developer",
+      "url": "https://www.appsoftware.com/blog/introducing-vs-code-agent-kanban-task-management-for-the-ai-assisted-developer",
+      "score": 89,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:07.079153+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47314769,
+      "title": "Show HN: DopaLoop – Habit tracker for ADHD brains, local-first, no streaks",
+      "url": "https://dopaloop.app/de",
+      "score": 3,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:08.150152+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47314722,
+      "title": "Show HN: Free open-source churn prediction for SaaS–Stripe and LLM interventions",
+      "url": "https://github.com/ShreyasDasari/churnguard-ai",
+      "score": 4,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:08.299969+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47314375,
+      "title": "Show HN: Dashboard for monitoring multiple Claude Code sessions",
+      "url": "https://github.com/Stargx/claude-code-dashboard",
+      "score": 2,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:08.445292+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47313630,
+      "title": "Show HN: I built a database of air fry times for 300+ foods",
+      "url": "https://airfrypro.com",
+      "score": 3,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:08.878692+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47313480,
+      "title": "Show HN: MindfulClaude – Guided breathing during Claude Code's thinking time",
+      "url": "https://github.com/halluton/Mindful-Claude",
+      "score": 4,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:09.027732+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47313280,
+      "title": "Show HN: Colchis Log – cryptographic audit trail for AI systems (Python)",
+      "url": "https://github.com/GhurtSky-GR13/colchis-log",
+      "score": 3,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:09.173696+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47287259,
+      "title": "Show HN: Reviving a 20-year-old puzzle game Chromatron with Ghidra and AI",
+      "url": "https://quesma.com/blog/chromatron-recompiled/",
+      "score": 24,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:09.465106+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47312495,
+      "title": "Show HN: ChatShell – 22MB AI Agent with 9 Built-In Tools (Tauri, Not Electron)",
+      "url": "https://github.com/chatshellapp/chatshell-desktop",
+      "score": 2,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:09.758710+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47305561,
+      "title": "Show HN: Run 500B+ Parameter LLMs Locally on a Mac Mini",
+      "url": "https://github.com/opengraviton/graviton",
+      "score": 10,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:10.199199+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47310543,
+      "title": "Show HN: Locode, a local first CLI that routes tasks to local LLMs or Claude",
+      "url": "https://github.com/chocks/locode",
+      "score": 4,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:10.939642+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47276604,
+      "title": "Show HN: Claude-replay – A video-like player for Claude Code sessions",
+      "url": "https://github.com/es617/claude-replay",
+      "score": 102,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:11.966164+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47282807,
+      "title": "Show HN: Kula – Lightweight, self-contained Linux server monitoring tool",
+      "url": "https://github.com/c0m4r/kula",
+      "score": 90,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:12.114306+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47307497,
+      "title": "Show HN: Engram – open-source persistent memory for AI agents (Bun and SQLite)",
+      "url": "https://github.com/zanfiel/engram",
+      "score": 2,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:12.265751+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47306241,
+      "title": "Show HN: Botais (Battle of the AI's) – Competitive Snake Game for LLMs",
+      "url": "https://botais.sello.dev",
+      "score": 3,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:12.847589+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47306144,
+      "title": "Show HN: Finsight – A Privacy First, AI Credit Card and Bank Statement Analyzer",
+      "url": "https://github.com/AJ/FinSight",
+      "score": 4,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:12.994922+00:00",
+      "date": "2026-03-10"
+    },
+    {
+      "id": 47293745,
+      "title": "Show HN: SiClaw – Open-source AIOps with a hypothesis-driven diagnostic engine",
+      "url": "https://github.com/scitix/siclaw",
+      "score": 9,
+      "source": "HackerNews",
+      "scraped_at": "2026-03-10T03:47:13.584249+00:00",
+      "date": "2026-03-10"
+    }
+  ]
+}
