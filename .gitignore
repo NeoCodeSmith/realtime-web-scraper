@@ -1,9 +1,8 @@
 # Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
-.Python
 *.egg-info/
 dist/
 build/
@@ -11,29 +10,35 @@ build/
 .eggs/
 
 # Virtual environments
-.venv/
 venv/
+.venv/
 env/
-ENV/
+.env/
 
-# Testing / linting cache
+# Testing & coverage
 .pytest_cache/
-.mypy_cache/
 .coverage
 htmlcov/
-.tox/
-
-# CI-generated files (committed by workflows, never manually)
-# Uncomment the lines below ONLY if you want to exclude them locally:
-# data/news_feed.json
-# history.log
-# reports/
-# archive/
+coverage.xml
+*.cover
 
 # IDE
-.idea/
 .vscode/
+.idea/
 *.swp
 *.swo
-*~
 .DS_Store
+
+# NeoSignal runtime outputs
+# (these are committed by CI, gitignored for local runs)
+# Uncomment below to prevent local outputs from being staged accidentally:
+# data/news_feed.json
+# history.log
+# reports/*.pdf
+# archive/
+
+# Secrets — NEVER commit these
+.env
+secrets.yaml
+*.pem
+*.key

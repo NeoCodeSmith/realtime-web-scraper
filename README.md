@@ -1,101 +1,129 @@
-<div align="center">
-
-<img src="https://img.shields.io/badge/NeoSignal-AI%20Intelligence-0A1228?style=for-the-badge&labelColor=0A1228&color=006EE6" alt="NeoSignal"/>
-
 # NeoSignal
 
-### AI News Intelligence — Daily
-
-**Scrapes 10 authoritative sources · Cross-verifies stories · Generates premium PDF reports · Delivers by email · Fully automated on GitHub Actions**
-
-<br/>
-
 [![CI](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/ci.yml/badge.svg)](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/ci.yml)
-[![Daily Pipeline](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/daily_pipeline.yml/badge.svg)](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/daily_pipeline.yml)
+[![Daily Report](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/daily_pipeline.yml/badge.svg)](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/daily_pipeline.yml)
 [![Weekly Digest](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/weekly_digest.yml/badge.svg)](https://github.com/NeoCodeSmith/NeoSignal/actions/workflows/weekly_digest.yml)
-[![Pylint 10/10](https://img.shields.io/badge/pylint-10.00%2F10-brightgreen)](https://pylint.org)
-[![Tests](https://img.shields.io/badge/tests-29%20passing-brightgreen)](tests/)
-[![Python 3.11](https://img.shields.io/badge/python-3.11-3776AB.svg?logo=python&logoColor=white)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-<br/>
-
-```
-10 Sources  →  AI Filter  →  Cross-Verify  →  Score  →  Premium PDF  →  Email  →  Git
-```
-
-**No backend. No database. No server. Zero infrastructure cost.**
-
-</div>
+**Automated AI intelligence pipeline.** Scrapes 10+ sources daily, deduplicates and cross-verifies stories, generates a premium styled PDF report, and delivers it by email at 9 AM IST.
 
 ---
 
-## What Is NeoSignal?
+## What It Does
 
-NeoSignal is a fully automated AI news intelligence pipeline. Every morning at **9:00 AM IST**, it:
-
-1. **Scrapes** 10 authoritative AI news sources simultaneously
-2. **Filters** 30+ AI keyword patterns across all articles
-3. **Deduplicates** stories that appear across multiple sources using title-similarity matching
-4. **Scores** each story with an authenticity score based on cross-source verification
-5. **Generates** a premium multi-page PDF intelligence report
-6. **Emails** the report directly to your inbox
-7. **Commits** the report to this repository as a permanent record
-
-Every Sunday at **9:00 PM IST**, a weekly digest categorises the week's stories into 4 intelligence domains.
+| Step | Detail |
+|------|--------|
+| **Scrape** | HackerNews (Show/Top/New), Reddit ×4, TechCrunch AI, VentureBeat AI, MIT Tech Review, The Verge AI, Wired AI, ArXiv CS.AI |
+| **Filter** | 35+ AI keyword patterns — LLMs, alignment, safety, research, tooling, strategy |
+| **Deduplicate** | Title-similarity matching merges cross-source variants of the same story |
+| **Score** | Authenticity formula: base + cross-source bonus + diversity bonus + HN score bonus |
+| **Report** | Premium PDF — cover page, source breakdown, tiered articles (VERIFIED / CONFIRMED / EMERGING) |
+| **Email** | Sent via Gmail SMTP if `EMAIL_*` secrets are configured |
 
 ---
 
-## Sources
+## Quick Start
 
-| Source | Type | Coverage |
-|---|---|---|
-| HackerNews (Show / Top / New) | Community | Practitioner discussions, OSS launches |
-| Reddit r/artificial | Community | General AI news and discussion |
-| Reddit r/MachineLearning | Community | Research papers, technical debate |
-| Reddit r/singularity | Community | AI futures and strategic implications |
-| Reddit r/LocalLLaMA | Community | Local model deployment and benchmarks |
-| TechCrunch AI | Media | Industry news, funding, products |
-| VentureBeat AI | Media | Enterprise AI, strategy, investments |
-| MIT Technology Review | Media | Research-grade analysis |
-| The Verge AI | Media | Consumer AI, products, policy |
-| Wired AI | Media | Long-form AI journalism |
-| ArXiv CS.AI | Research | Pre-print papers, cutting-edge research |
+```bash
+# Clone
+git clone https://github.com/NeoCodeSmith/NeoSignal.git
+cd NeoSignal
+
+# Install
+make install-dev
+
+# Run full pipeline
+make run
+
+# Reports appear in reports/
+```
+
+---
+
+## Configuration
+
+**All parameters live in `config/config.yaml`** — the single source of truth. No values are hardcoded in Python source.
+
+```yaml
+# config/config.yaml (excerpt)
+scraper:
+  hn_limit: 60
+  request_retries: 3
+
+scoring:
+  base_score: 0.5
+  min_authenticity: 0.25
+
+keywords:
+  rss_sources:
+    "TechCrunch AI": "https://techcrunch.com/..."
+    # Add any RSS feed here — no code changes needed
+```
+
+### Runtime Overrides
+
+Override any config value via environment variable:
+
+```bash
+NEOSIGNAL__SCRAPER__HN_LIMIT=100
+NEOSIGNAL__SCORING__MIN_AUTHENTICITY=0.3
+```
+
+Set these as **GitHub Actions Secrets** for CI overrides.
+
+### Secrets (Email Delivery)
+
+Add these in **Settings → Secrets → Actions**:
+
+| Secret | Purpose |
+|--------|---------|
+| `EMAIL_USERNAME` | Gmail address (sender) |
+| `EMAIL_PASSWORD` | [Gmail App Password](https://support.google.com/accounts/answer/185833) |
+| `EMAIL_TO` | Recipient address |
+
+See [`.github/EMAIL_SETUP.md`](.github/EMAIL_SETUP.md) for step-by-step instructions.
+
+---
+
+## Adding a New Source
+
+**RSS/Atom feed** — edit `config/config.yaml`, add one line:
+
+```yaml
+scraper:
+  rss_sources:
+    "My New Source": "https://example.com/ai/feed/"
+```
+
+No Python changes. No re-deployment. Commit and push.
+
+**Reddit subreddit** — add an entry to `scraper.reddit_subs`:
+
+```yaml
+scraper:
+  reddit_subs:
+    - url:  "https://www.reddit.com/r/AINews.json?limit=25&sort=hot"
+      name: "r/AINews"
+```
 
 ---
 
 ## Authenticity Scoring
 
-Every story is scored **0 – 100%** based on independent cross-source verification:
+```
+score = base (0.5)
+      + min(0.3 × extra_sources, 0.5)   ← cross-source corroboration
+      + 0.1 if community AND media both present
+      + 0.1 if HN score ≥ 100
+      capped at 1.0
+```
 
 | Tier | Score | Meaning |
-|---|---|---|
-| 🟢 **VERIFIED** | 80 – 100% | Covered by 3+ independent sources including media outlets |
-| 🟡 **CONFIRMED** | 50 – 79% | Covered by 2 sources, or 1 high-quality media outlet |
-| ⚪ **EMERGING** | 25 – 49% | Single-source; passes AI keyword filter |
+|------|-------|---------|
+| **VERIFIED** | ≥ 0.80 | 3+ independent sources including media |
+| **CONFIRMED** | ≥ 0.50 | 2 sources or 1 high-quality outlet |
+| **EMERGING** | ≥ 0.25 | Single source, passed keyword filter |
 
-Stories below **25%** authenticity are automatically dropped.
-
-**Score formula:**
-```
-authenticity = 0.5 (base)
-             + 0.3 × (additional sources, max +0.5)
-             + 0.1 (if story spans both community + media types)
-             + 0.1 (if HN score ≥ 100)
-             = max 1.0
-```
-
----
-
-## PDF Report Structure
-
-Each daily report contains:
-
-| Page | Content |
-|---|---|
-| 1 | **Cover** — Brand bar, date, stat cards (Total / Verified / Confirmed / Emerging), pipeline explanation, tier legend |
-| 2 | **Source Breakdown** — Table showing article count per source and category |
-| 3+ | **Intelligence Tiers** — Articles grouped by VERIFIED → CONFIRMED → EMERGING, each with title, source badge, summary, authenticity %, and URL |
+All weights are configurable in `config.yaml`.
 
 ---
 
@@ -103,159 +131,80 @@ Each daily report contains:
 
 ```
 NeoSignal/
+├── config/
+│   └── config.yaml          ← ALL tunable parameters here
 ├── src/
-│   ├── scraper.py          # Multi-source scraper with cross-source authenticity scoring
-│   ├── pdf_generator.py    # Premium PDF report engine (DejaVu Unicode font)
-│   └── digest.py           # Weekly categorised digest generator
+│   ├── config.py            ← Config loader + env override
+│   ├── models.py            ← Article TypedDict + validated factory
+│   ├── scraper.py           ← Multi-source scraper + dedup + scoring
+│   ├── pdf_generator.py     ← Daily report PDF
+│   └── digest.py            ← Weekly digest PDF
 ├── tests/
-│   └── test_scraper.py     # 29 unit tests — keyword filter, dedup, scoring, I/O
-├── data/
-│   └── news_feed.json      # Latest scrape output — auto-updated by CI daily
-├── reports/                # Daily PDF reports — auto-committed by CI
-├── archive/                # Weekly digest PDFs — auto-committed Sunday nights
-├── history.log             # Deduplication log — prevents re-reporting seen stories
+│   ├── test_config.py
+│   ├── test_models.py
+│   └── test_scraper.py
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── ADR-001-config-yaml.md
+│   ├── ADR-002-defusedxml.md
+│   ├── ADR-003-article-model.md
+│   ├── ADR-004-history-ttl.md
+│   └── ADR-005-retry-backoff.md
 ├── .github/
 │   ├── workflows/
-│   │   ├── ci.yml              # Tests + Pylint on every push/PR
-│   │   ├── daily_pipeline.yml  # 9:00 AM IST — scrape → PDF → email → commit
-│   │   └── weekly_digest.yml   # 9:00 PM IST Sunday — digest → email → commit
-│   └── EMAIL_SETUP.md          # Step-by-step email delivery setup guide
+│   │   ├── ci.yml              ← Tests + lint (Python 3.11 & 3.12)
+│   │   ├── daily_pipeline.yml  ← Scrape + PDF (9:00 AM IST daily)
+│   │   └── weekly_digest.yml   ← Digest (9:00 PM IST Sunday)
+│   └── EMAIL_SETUP.md
+├── data/                    ← news_feed.json (committed by CI)
+├── reports/                 ← Daily PDFs (committed by CI)
+├── archive/                 ← Weekly digests (committed by CI)
+├── Makefile
 ├── requirements.txt
-└── .pylintrc
+├── requirements-dev.txt
+└── history.log              ← Dedup log (auto-pruned after 30 days)
 ```
 
 ---
 
-## Quick Start
-
-### Prerequisites
+## Development
 
 ```bash
-git clone https://github.com/NeoCodeSmith/NeoSignal.git
-cd NeoSignal
-pip install -r requirements.txt
-sudo apt-get install -y fonts-dejavu-core   # Ubuntu/Debian — required for Unicode PDF
-```
-
-### Run the Pipeline Locally
-
-```bash
-# 1. Scrape all sources and produce data/news_feed.json
-python -m src.scraper
-
-# 2. Generate the PDF report
-python -m src.pdf_generator
-
-# 3. Generate weekly digest
-python -m src.digest
-```
-
-### Run Tests
-
-```bash
-pytest tests/ -v
-```
-
-### Check Code Quality
-
-```bash
-pylint src/ tests/
+make test          # Run 91 tests
+make lint          # Pylint src/ tests/
+make audit         # Dependency vulnerability scan
+make run-scraper   # Scraper only
+make run-pdf       # PDF only (requires data/news_feed.json)
+make run-digest    # Weekly digest
+make clean         # Remove __pycache__, .pytest_cache
 ```
 
 ---
 
-## Automated Delivery — Email Setup
-
-The daily report is emailed automatically at 9:00 AM IST.  
-**One-time setup: add 3 repository secrets.**
-
-See **[.github/EMAIL_SETUP.md](.github/EMAIL_SETUP.md)** for the full step-by-step guide.
-
-| Secret | Description |
-|---|---|
-| `EMAIL_USERNAME` | Your Gmail address |
-| `EMAIL_PASSWORD` | Gmail App Password (16 chars) — **not** your account password |
-| `EMAIL_TO` | Recipient email address |
-
----
-
-## Schedules
-
-| Workflow | Schedule | IST | UTC |
-|---|---|---|---|
-| Daily Report | Every day | 9:00 AM | 3:30 AM |
-| Weekly Digest | Every Sunday | 9:00 PM | 3:30 PM |
-
-Both workflows can also be triggered manually from the **Actions** tab → **Run workflow**.
-
----
-
-## CI / CD
+## CI/CD
 
 | Workflow | Trigger | Steps |
-|---|---|---|
-| `ci.yml` | Every push + PR to `main` | Install deps → Run 29 tests → Pylint (≥ 9.0 required) |
-| `daily_pipeline.yml` | 9 AM IST cron + manual | Install fonts → Scrape → Validate → PDF → Validate → Email → Commit |
-| `weekly_digest.yml` | 9 PM IST Sunday + manual | Scrape → Digest PDF → Email → Commit to archive |
+|----------|---------|-------|
+| **CI** | Push / PR to `main` | Tests (3.11+3.12), pylint ≥9.0, pip-audit |
+| **Daily Report** | 9:00 AM IST | Scrape → PDF → commit → email |
+| **Weekly Digest** | 9:00 PM IST Sunday | Scrape → categorise → digest → commit → email |
 
-All commits use `GITHUB_TOKEN` — no personal tokens stored.
-
----
-
-## Technical Details
-
-### Scraper (`src/scraper.py`)
-
-- Parallel scraping across 10+ sources with full error isolation per source
-- `_safe_get()` catches all network exceptions — one failed source never crashes the pipeline
-- Title-similarity deduplication using `SequenceMatcher` (45% threshold)
-- HTML stripping and entity decoding for RSS `<description>` fields
-- Atomic JSON write (`os.replace`) — partial writes never corrupt the feed
-
-### PDF Generator (`src/pdf_generator.py`)
-
-- DejaVu Unicode TTF font — handles em-dashes, smart quotes, ellipses natively
-- Pure flow layout — zero absolute `set_xy` inside article cards
-- Pre-flight height estimation — page breaks happen before cards, never mid-card
-- Colour-coded tiers (green/amber/slate), source type badges (blue=media, purple=community)
-- Left tier stripe, alternating card backgrounds, running header/footer
-
-### Authenticity Engine
-
-```python
-authenticity = min(
-    0.5                                      # base score
-    + min(0.3 * (n_sources - 1), 0.5)       # cross-source bonus (capped)
-    + (0.1 if cross_type_diversity else 0)   # community + media both present
-    + (0.1 if hn_score >= 100 else 0),       # high community engagement
-    1.0
-)
-```
-
----
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+All pipeline artefacts (PDFs, `news_feed.json`, `history.log`) are committed back to the repo by the CI bot, forming a permanent archive.
 
 ---
 
 ## Security
 
-See [SECURITY.md](SECURITY.md).
+- **No hardcoded secrets** — all credentials via GitHub Actions Secrets
+- **XXE-safe XML parsing** — `defusedxml` used throughout (see [ADR-002](docs/ADR-002-defusedxml.md))
+- **Retry with backoff** — prevents cascade failures and respects rate limits
+- **Atomic writes** — `news_feed.json` written via tmp+replace, no partial reads
+- **History TTL** — log bounded to 30 days, never grows unbounded
+
+See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 
 ---
 
-## License
+## Changelog
 
-MIT — see [LICENSE](LICENSE).
-
----
-
-<div align="center">
-
-Built with GitHub Actions · fpdf2 · Python 3.11
-
-**No servers were harmed in the making of this pipeline.**
-
-</div>
+See [CHANGELOG.md](CHANGELOG.md).

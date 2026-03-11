@@ -16,30 +16,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ── Checkout ─────────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ── Python & system deps ──────────────────────────────────────────────────
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
 
-      - name: Install system fonts (required for Unicode PDF)
+      - name: Install system fonts (Unicode PDF)
         run: sudo apt-get install -y fonts-dejavu-core
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # ── Pipeline ──────────────────────────────────────────────────────────────
       - name: Prepare directories
         run: mkdir -p data reports archive
 
-      - name: Run multi-source scraper
+      # ── Config override via env vars (no secrets in config.yaml) ─────────────
+      # Add NEOSIGNAL__* vars in repo Settings → Secrets → Actions to override
+      # any config.yaml value at runtime without touching source code.
+      # Example: NEOSIGNAL__SCRAPER__HN_LIMIT=100
+
+      - name: Run scraper
         run: python -m src.scraper
 
       - name: Validate scraper output
@@ -50,11 +52,10 @@ jobs:
             exit 1
           fi
           ARTICLE_COUNT=$(python -c "import json; d=json.load(open('data/news_feed.json')); print(d['meta']['article_count'])")
-          RAW_COUNT=$(python -c "import json; d=json.load(open('data/news_feed.json')); print(d['meta'].get('raw_count', 0))")
-          echo "Scraped: $ARTICLE_COUNT articles verified (raw: $RAW_COUNT)"
+          RAW_COUNT=$(python -c "import json; d=json.load(open('data/news_feed.json')); print(d['meta'].get('raw_count',0))")
+          echo "Scraped: $ARTICLE_COUNT articles (raw: $RAW_COUNT)"
           echo "articles=$ARTICLE_COUNT" >> "$GITHUB_OUTPUT"
           echo "raw_count=$RAW_COUNT"    >> "$GITHUB_OUTPUT"
-          echo "ARTICLE_COUNT=$ARTICLE_COUNT" >> "$GITHUB_ENV"
 
       - name: Generate PDF report
         run: python -m src.pdf_generator
@@ -69,50 +70,36 @@ jobs:
           fi
           PDF_SIZE=$(stat -c%s "$PDF_PATH")
           echo "PDF: $PDF_PATH ($PDF_SIZE bytes)"
-          echo "path=$PDF_PATH"   >> "$GITHUB_OUTPUT"
-          echo "size=$PDF_SIZE"   >> "$GITHUB_OUTPUT"
-          echo "PDF_PATH=$PDF_PATH" >> "$GITHUB_ENV"
+          echo "path=$PDF_PATH" >> "$GITHUB_OUTPUT"
+          echo "size=$PDF_SIZE" >> "$GITHUB_OUTPUT"
 
-      # ── Set timestamp ─────────────────────────────────────────────────────────
       - name: Set IST timestamp
-        run: |
-          echo "IST_DATE=$(TZ='Asia/Kolkata' date +'%Y-%m-%d %I:%M %p IST')" >> "$GITHUB_ENV"
+        run: echo "IST_DATE=$(TZ='Asia/Kolkata' date +'%Y-%m-%d %I:%M %p IST')" >> "$GITHUB_ENV"
 
-      # ── Commit report BEFORE email (so PDF is always saved even if email fails) ─
+      # ── Commit BEFORE email — PDF is always saved even if email fails ─────────
       - name: Commit and push report
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "NeoSignal Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Use token-authenticated remote for this session
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
-          # Stage all CI-generated files
           git add data/news_feed.json
           git add reports/
           git add history.log
-          # archive/ committed by weekly digest, not daily
 
-          # Only proceed if there is something new to commit
           if git diff --cached --quiet; then
-            echo "No new content to commit — skipping push."
+            echo "No new content to commit."
             exit 0
           fi
 
-          # Commit locally first (working tree is now clean)
           git commit -m "report: NeoSignal daily — ${{ env.IST_DATE }} — ${{ steps.scraper.outputs.articles }} stories"
-
-          # Sync: rebase our new commit on top of any concurrent remote pushes
-          # Working tree is clean after commit, so rebase cannot fail due to unstaged changes
           git pull --rebase origin main
-
-          # Push
           git push origin main
           echo "Report committed and pushed."
 
-      # ── Email (skipped cleanly if secrets not configured) ─────────────────────
+      # ── Email (gracefully skipped if secrets not set) ─────────────────────────
       - name: Check email secrets
         id: email_check
         run: |
@@ -140,8 +127,6 @@ jobs:
           from: NeoSignal Bot <${{ secrets.EMAIL_USERNAME }}>
           subject: "NeoSignal Daily — ${{ steps.scraper.outputs.articles }} AI stories — ${{ env.IST_DATE }}"
           body: |
-            Good morning!
-
             Your NeoSignal AI Intelligence Report is attached.
 
             Today's summary
@@ -150,21 +135,20 @@ jobs:
             Raw scraped      : ${{ steps.scraper.outputs.raw_count }}
             Report size      : ${{ steps.pdf.outputs.size }} bytes
 
-            Sources scraped: HackerNews, Reddit ×4, TechCrunch AI,
-            VentureBeat AI, MIT Tech Review, The Verge AI, Wired AI, ArXiv CS.AI
+            Sources: HackerNews, Reddit ×4, TechCrunch AI, VentureBeat AI,
+                     MIT Tech Review, The Verge AI, Wired AI, ArXiv CS.AI
 
             Authenticity tiers
             ──────────────────
-            VERIFIED  (≥80%) — 3+ independent sources
-            CONFIRMED (≥50%) — 2 sources
-            EMERGING  (≥25%) — single source, passed AI keyword filter
+            VERIFIED  ≥80% — 3+ independent sources
+            CONFIRMED ≥50% — 2 sources
+            EMERGING  ≥25% — single source, passed AI keyword filter
 
             — NeoSignal Bot
             https://github.com/${{ github.repository }}
           attachments: ${{ steps.pdf.outputs.path }}
 
-      # ── Debug artefacts on any failure ────────────────────────────────────────
-      - name: Upload debug artefacts
+      - name: Upload debug artefacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:

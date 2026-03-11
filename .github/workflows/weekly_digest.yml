@@ -2,7 +2,7 @@ name: NeoSignal Weekly Digest — Sunday 9 PM IST
 
 on:
   schedule:
-    - cron: '30 15 * * 0'   # 09:00 PM IST every Sunday (UTC+5:30)
+    - cron: '30 15 * * 0'   # 09:00 PM IST every Sunday
   workflow_dispatch:
 
 permissions:
@@ -16,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -27,23 +26,28 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
 
-      - name: Install system fonts (required for Unicode PDF)
+      - name: Install system fonts
         run: sudo apt-get install -y fonts-dejavu-core
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Prepare directories
         run: mkdir -p data reports archive
 
-      - name: Run scraper (refresh this week's data)
+      - name: Run scraper
         run: python -m src.scraper
 
       - name: Generate weekly digest
         id: digest
         run: |
           python -m src.digest
+          # Find digest PDF created in archive/<week>/ directory
           DIGEST_PATH=$(find archive -name "*.pdf" -newer requirements.txt 2>/dev/null | sort | tail -1)
+          if [ -z "$DIGEST_PATH" ]; then
+            # Fallback: find any pdf in archive newer than 5 minutes
+            DIGEST_PATH=$(find archive -name "*.pdf" -mmin -5 2>/dev/null | sort | tail -1)
+          fi
           if [ -z "$DIGEST_PATH" ]; then
             echo "::error::Digest PDF was not created"
             exit 1
@@ -53,19 +57,15 @@ jobs:
           echo "path=$DIGEST_PATH"   >> "$GITHUB_OUTPUT"
           echo "size=$DIGEST_SIZE"   >> "$GITHUB_OUTPUT"
 
-      # ── Set timestamp ─────────────────────────────────────────────────────────
       - name: Set IST timestamp
-        run: |
-          echo "IST_DATE=$(TZ='Asia/Kolkata' date +'%Y-%m-%d %I:%M %p IST')" >> "$GITHUB_ENV"
+        run: echo "IST_DATE=$(TZ='Asia/Kolkata' date +'%Y-%m-%d %I:%M %p IST')" >> "$GITHUB_ENV"
 
-      # ── Commit digest BEFORE email ────────────────────────────────────────────
-      - name: Commit and push digest archive
+      - name: Commit and push digest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "NeoSignal Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           git add archive/
@@ -73,19 +73,15 @@ jobs:
           git add history.log
 
           if git diff --cached --quiet; then
-            echo "No new content to commit — skipping push."
+            echo "No new content to commit."
             exit 0
           fi
 
           git commit -m "digest: NeoSignal weekly — ${{ env.IST_DATE }}"
-
-          # Sync: rebase on top of any concurrent pushes (tree is clean after commit)
           git pull --rebase origin main
-
           git push origin main
           echo "Digest committed and pushed."
 
-      # ── Email (skipped cleanly if secrets not configured) ─────────────────────
       - name: Check email secrets
         id: email_check
         run: |
@@ -93,14 +89,14 @@ jobs:
             echo "ready=true"  >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "Email secrets not configured — skipping. See .github/EMAIL_SETUP.md"
+            echo "Email secrets not configured — skipping."
           fi
         env:
           SECRET_TO:   ${{ secrets.EMAIL_TO }}
           SECRET_USER: ${{ secrets.EMAIL_USERNAME }}
           SECRET_PASS: ${{ secrets.EMAIL_PASSWORD }}
 
-      - name: Send weekly digest by email
+      - name: Send digest by email
         if: steps.email_check.outputs.ready == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
@@ -111,7 +107,7 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           to: ${{ secrets.EMAIL_TO }}
           from: NeoSignal Bot <${{ secrets.EMAIL_USERNAME }}>
-          subject: "NeoSignal Weekly Digest — AI Intelligence Summary — ${{ env.IST_DATE }}"
+          subject: "NeoSignal Weekly Digest — AI Intelligence — ${{ env.IST_DATE }}"
           body: |
             Your weekly NeoSignal AI intelligence digest is attached.
 
@@ -123,15 +119,13 @@ jobs:
               • Safety & Regulation
               • Tools & Engineering
 
-            Each story includes a summary, authenticity score, and source attribution.
-
             Report size: ${{ steps.digest.outputs.size }} bytes
 
             — NeoSignal Bot
             https://github.com/${{ github.repository }}
           attachments: ${{ steps.digest.outputs.path }}
 
-      - name: Upload debug artefacts
+      - name: Upload debug artefacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:

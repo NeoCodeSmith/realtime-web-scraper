@@ -1,14 +1,20 @@
 """
-NeoSignal PDF Report Generator v3.1
+NeoSignal PDF Report Generator v4.0
 
-Premium intelligence report with:
-  - Cover page: brand bar, stat cards, pipeline explanation, tier legend
-  - Source breakdown table
-  - Articles in tier sections — each card has title, source badges,
-    summary/description, authenticity score, and URL
-  - Pure flow-based layout (no absolute set_xy inside cards)
-  - Pre-flight page-break check ensures each card stays intact
-  - DejaVu Unicode font with Latin-1 fallback
+Generates a premium multi-page intelligence report from news_feed.json.
+
+Pages:
+  1. Cover — brand bar, stat cards (Total/Verified/Confirmed/Emerging),
+             pipeline explanation, tier legend
+  2. Source Breakdown — table: source name, article count, category
+  3+. Articles — tiered sections (VERIFIED → CONFIRMED → EMERGING)
+      Each card: index, tier label, title, source badge, cross-source count,
+      authenticity %, HN score, summary, URL
+
+Layout: pure flow (zero absolute set_xy inside cards).
+Pre-flight height estimation triggers page breaks BEFORE a card, never mid-card.
+
+All config (font paths, tier thresholds, scoring weights) from config/config.yaml.
 """
 
 import html as html_lib
@@ -23,15 +29,17 @@ from pathlib import Path
 
 from fpdf import FPDF, XPos, YPos
 
+from src.config import cfg
+
 log = logging.getLogger(__name__)
 
 BASE_DIR      = Path(__file__).resolve().parent.parent
 DATA_DIR      = BASE_DIR / "data"
 REPORTS_DIR   = BASE_DIR / "reports"
 NEWS_FILE     = DATA_DIR / "news_feed.json"
-HISTORY_FILE  = BASE_DIR / "history.log"
+HISTORY_FILE  = BASE_DIR / cfg.history.filename
 
-# ── Colours ────────────────────────────────────────────────────────────────
+# ── Colour palette ─────────────────────────────────────────────────────────
 C_NAVY       = (10,  18,  40)
 C_BLUE       = (0,   110, 230)
 C_VERIFIED   = (16,  122, 64)
@@ -46,18 +54,18 @@ C_BODY       = (25,  28,  48)
 C_MUTED      = (120, 125, 145)
 C_URL        = (0,   90,  200)
 
-TTF_REG  = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-TTF_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-PAGE_W   = 210
-L_MAR    = 14
-R_MAR    = 14
+PAGE_W    = 210
+L_MAR     = 14
+R_MAR     = 14
 CONTENT_W = PAGE_W - L_MAR - R_MAR
 
 
 def _find_fonts():
-    """Return (regular_path, bold_path) or (None, None)."""
-    if os.path.exists(TTF_REG) and os.path.exists(TTF_BOLD):
-        return TTF_REG, TTF_BOLD
+    """Return (regular_path, bold_path) from config or (None, None)."""
+    reg  = cfg.pdf.font_regular
+    bld  = cfg.pdf.font_bold
+    if os.path.exists(reg) and os.path.exists(bld):
+        return reg, bld
     return None, None
 
 
@@ -82,12 +90,31 @@ def _strip_html(raw):
 
 
 def _auth_tier(score):
-    """(label, colour) from authenticity score."""
-    if score >= 0.8:
-        return "VERIFIED",   C_VERIFIED
-    if score >= 0.5:
-        return "CONFIRMED",  C_CONFIRMED
-    return "EMERGING",   C_EMERGING
+    """Return (tier_label, colour_tuple) based on config thresholds."""
+    if score >= cfg.pdf.tier_verified:
+        return "VERIFIED",  C_VERIFIED
+    if score >= cfg.pdf.tier_confirmed:
+        return "CONFIRMED", C_CONFIRMED
+    return "EMERGING", C_EMERGING
+
+
+def _build_pipeline_steps():
+    """Build pipeline explanation from config — no hardcoded source names."""
+    rss_names = ", ".join(cfg.scraper.rss_sources.as_dict().keys())
+    reddit_names = ", ".join(
+        s.get("name", "?") for s in cfg.scraper.reddit_subs
+    )
+    sim_t  = cfg.scoring.similarity_threshold
+    min_a  = cfg.scoring.min_authenticity
+    base   = cfg.scoring.base_score
+    bonus  = cfg.scoring.cross_source_bonus
+    return [
+        f"Scrape   HackerNews (Show/Top/New), Reddit ({reddit_names}), {rss_names}",
+        f"Filter   {len(cfg.keywords.ai_filter)}+ AI keyword patterns — LLMs, alignment, safety, research, tooling",
+        f"Dedup    Title-similarity ({int(sim_t*100)}% threshold) merges cross-source variants",
+        f"Score    Authenticity = {base} base + {bonus} per extra source + diversity + HN score bonuses",
+        f"Rank     Sorted by authenticity. Below {min_a} threshold are dropped.",
+    ]
 
 
 class NeoSignalPDF(FPDF):
@@ -96,13 +123,11 @@ class NeoSignalPDF(FPDF):
     def __init__(self, issue_date):
         super().__init__()
         self.issue_date = issue_date
-        self._fn        = "Helvetica"
+        self._fn        = cfg.pdf.font_fallback
         self._uni       = False
         self._load_fonts()
         self.set_margins(L_MAR, 10, R_MAR)
         self.set_auto_page_break(auto=True, margin=18)
-
-    # ── Font helpers ──────────────────────────────────────────────────────────
 
     def _load_fonts(self):
         reg, bld = _find_fonts()
@@ -115,14 +140,11 @@ class NeoSignalPDF(FPDF):
                 log.info("PDF: DejaVu Unicode font loaded.")
                 return
             except Exception as exc:  # pylint: disable=broad-exception-caught
-                log.warning("DejaVu load failed: %s — Helvetica fallback.", exc)
-        log.info("PDF: Using Helvetica (ASCII sanitisation active).")
+                log.warning("DejaVu load failed: %s — fallback active.", exc)
+        log.info("PDF: Using %s (ASCII sanitisation active).", self._fn)
 
     def _t(self, text):
-        """Text passthrough or sanitise depending on font mode."""
         return str(text) if self._uni else _sanitize(str(text))
-
-    # ── Colour helpers ────────────────────────────────────────────────────────
 
     def _tc(self, r, g, b):
         self.set_text_color(r, g, b)
@@ -132,8 +154,6 @@ class NeoSignalPDF(FPDF):
 
     def _dc(self, r, g, b):
         self.set_draw_color(r, g, b)
-
-    # ── Header / footer ───────────────────────────────────────────────────────
 
     def header(self):
         if self.page_no() == 1:
@@ -160,27 +180,21 @@ class NeoSignalPDF(FPDF):
                   align="C")
         self._tc(*C_BODY)
 
-    # ── Cover page ─────────────────────────────────────────────────────────────
-
     def cover_page(self, total, verified, confirmed, emerging, sources_hit, raw_count):  # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
-        """Full cover page with branding, stats, and pipeline explanation."""
+        """Full cover page."""
         self.add_page()
 
-        # ── Brand bar ────────────────────────────────────────────────────────
+        # Brand bar
         self._fc(*C_NAVY)
         self.rect(0, 0, PAGE_W, 50, "F")
-
         self.set_xy(L_MAR, 9)
         self.set_font(self._fn, "B", 26)
         self._tc(*C_WHITE)
         self.cell(0, 11, "NeoSignal", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-
         self.set_x(L_MAR)
         self.set_font(self._fn, size=8)
         self._tc(150, 185, 255)
         self.cell(0, 5, self._t("AI Intelligence Daily  ·  Multi-Source  ·  Cross-Verified"))
-
-        # Issue info top-right
         self.set_xy(PAGE_W - 72, 12)
         self.set_font(self._fn, "B", 9)
         self._tc(*C_WHITE)
@@ -190,19 +204,17 @@ class NeoSignalPDF(FPDF):
         self.set_font(self._fn, size=7)
         self._tc(150, 185, 255)
         self.cell(60, 4,
-                  self._t(f"{total} stories verified  ·  {raw_count} raw scraped  ·  {sources_hit} sources"),
+                  self._t(f"{total} verified  ·  {raw_count} raw  ·  {sources_hit} sources"),
                   align="R")
 
-        # ── Stat cards ────────────────────────────────────────────────────────
+        # Stat cards
         cards = [
             ("TOTAL",     str(total),     C_BLUE),
             ("VERIFIED",  str(verified),  C_VERIFIED),
             ("CONFIRMED", str(confirmed), C_CONFIRMED),
             ("EMERGING",  str(emerging),  C_EMERGING),
         ]
-        cw    = (CONTENT_W - 9) / 4
-        cx    = float(L_MAR)
-        cy    = 57.0
+        cw, cx, cy = (CONTENT_W - 9) / 4, float(L_MAR), 57.0
         for label, value, colour in cards:
             self._fc(*C_BG_ALT)
             self._dc(*colour)
@@ -221,36 +233,29 @@ class NeoSignalPDF(FPDF):
             cx += cw + 3
         self.set_line_width(0.2)
 
-        # ── Pipeline explanation ───────────────────────────────────────────────
+        # Pipeline explanation (built from config — no hardcoded source names)
         self.set_y(90)
         self.set_font(self._fn, "B", 9)
         self._tc(*C_NAVY)
         self.cell(0, 6, "Pipeline", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         self.set_font(self._fn, size=7.5)
         self._tc(55, 60, 80)
-        steps = [
-            "Scrape  HackerNews (Show/Top/New), Reddit (r/artificial, r/MachineLearning, "
-            "r/singularity, r/LocalLLaMA), TechCrunch AI, VentureBeat AI, MIT Tech Review, "
-            "The Verge AI, Wired AI, ArXiv CS.AI",
-            "Filter   30+ AI keyword patterns — LLMs, alignment, safety, research, tooling, strategy",
-            "Dedup   Title-similarity matching (45% threshold) merges cross-source variants of same story",
-            "Score   Authenticity = 0.5 base + 0.3 per extra source + diversity bonus + HN score bonus",
-            "Rank    Stories sorted by authenticity score. Below 0.25 threshold are dropped.",
-        ]
-        for step in steps:
+        for step in _build_pipeline_steps():
             self.multi_cell(CONTENT_W, 4.5, self._t(step),
                             new_x=XPos.LMARGIN, new_y=YPos.NEXT)
             self.ln(0.5)
 
-        # ── Tier legend ────────────────────────────────────────────────────────
+        # Tier legend
         self.ln(4)
         self.set_font(self._fn, "B", 9)
         self._tc(*C_NAVY)
         self.cell(0, 6, "Authenticity Tiers", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        tv, tc = cfg.pdf.tier_verified, cfg.pdf.tier_confirmed
         for colour, tier, desc in [
-            (C_VERIFIED,  "VERIFIED   0.80 - 1.00", "3+ independent sources including media"),
-            (C_CONFIRMED, "CONFIRMED  0.50 - 0.79", "2 sources or 1 high-quality media outlet"),
-            (C_EMERGING,  "EMERGING   0.25 - 0.49", "Single-source; passes AI keyword filter"),
+            (C_VERIFIED,  f"VERIFIED   {tv:.2f} - 1.00", "3+ independent sources including media"),
+            (C_CONFIRMED, f"CONFIRMED  {tc:.2f} - {tv - 0.01:.2f}", "2 sources or 1 high-quality media"),
+            (C_EMERGING,  f"EMERGING   {cfg.scoring.min_authenticity:.2f} - {tc - 0.01:.2f}",
+             "Single-source; passes AI keyword filter"),
         ]:
             self._fc(*colour)
             self.rect(L_MAR, self.get_y() + 1.5, 3, 3, "F")
@@ -262,10 +267,8 @@ class NeoSignalPDF(FPDF):
             self._tc(75, 80, 100)
             self.cell(0, 5, self._t(desc), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-    # ── Source breakdown ───────────────────────────────────────────────────────
-
     def source_table(self, articles):
-        """Compact source breakdown table on a new page."""
+        """Page 2 — source breakdown table."""
         self.add_page()
         self.set_font(self._fn, "B", 11)
         self._tc(*C_NAVY)
@@ -278,18 +281,17 @@ class NeoSignalPDF(FPDF):
             s for a in articles for s in a.get("all_sources", [a.get("source", "?")])
         )
         col = [94, 28, 52]
-        # Header
         self._fc(*C_NAVY)
         self.set_font(self._fn, "B", 7.5)
         self._tc(*C_WHITE)
-        for i, hdr in enumerate(["Source", "Articles", "Category"]):
-            self.cell(col[i], 6, hdr, fill=True)
+        for hdr in ["Source", "Articles", "Category"]:
+            self.cell(col[0 if hdr == "Source" else 1 if hdr == "Articles" else 2],
+                      6, hdr, fill=True)
         self.ln()
-        # Rows
         alt = False
         for source, cnt in sorted(counts.items(), key=lambda x: -x[1]):
             self._fc(*(C_BG_ALT if alt else C_WHITE))
-            cat    = "Community" if source in ("HackerNews",) or "Reddit" in source else "Media"
+            cat    = "Community" if source == "HackerNews" or "Reddit" in source else "Media"
             colour = C_COMM_BDG if cat == "Community" else C_MEDIA_BDG
             self.set_font(self._fn, size=7.5)
             self._tc(*C_BODY)
@@ -302,14 +304,11 @@ class NeoSignalPDF(FPDF):
             alt = not alt
         self._tc(*C_BODY)
 
-    # ── Section header ────────────────────────────────────────────────────────
-
     def section_header(self, label, count, colour):
-        """Full-width coloured section banner."""
+        """Full-width coloured tier banner."""
         self.ln(3)
         self._fc(*colour)
-        y = self.get_y()
-        self.rect(0, y, PAGE_W, 8, "F")
+        self.rect(0, self.get_y(), PAGE_W, 8, "F")
         self.set_font(self._fn, "B", 8.5)
         self._tc(*C_WHITE)
         self.cell(0, 8,
@@ -318,26 +317,21 @@ class NeoSignalPDF(FPDF):
         self._tc(*C_BODY)
         self.ln(2)
 
-    # ── Article card (flow-only layout) ───────────────────────────────────────
-
     def _estimate_card_height(self, article):
         """
-        Estimate the card height in mm so we can trigger a page break
-        before rendering instead of mid-card.
+        Conservative card height estimate.
+        Errs on the side of larger to prevent mid-card page breaks.
         """
-        title      = article.get("title", "")
-        summary    = article.get("summary", "")
-        # title: ~11 chars/mm at 9pt bold over CONTENT_W-12mm = ~170 chars/line → ceil lines * 5mm
-        title_lines = max(1, (len(title) // 85) + 1)
-        summ_lines  = max(0, (len(summary) // 95) + 1) if summary else 0
-        return 6 + title_lines * 5 + 5 + summ_lines * 4.5 + 5 + 4  # header+title+meta+summary+url+padding
+        title   = article.get("title", "")
+        summary = article.get("summary", "")
+        # ~80 chars per line at 9pt bold; summary ~90 chars per line at 7.5pt
+        title_lines = max(1, len(title) // 80 + 1)
+        summ_lines  = max(0, len(summary) // 90 + 1) if summary else 0
+        # header(5) + title_lines×5 + meta(5) + summary_lines×4.5 + url(4.5) + padding(5)
+        return 5 + title_lines * 5 + 5 + summ_lines * 4.5 + 4.5 + 5
 
     def article_card(self, article, index, alt_bg=False):  # pylint: disable=too-many-locals,too-many-statements
-        """
-        Render one article card using pure flow layout.
-        A pre-flight height check is done by the caller — this method
-        never uses set_xy or absolute Y positions.
-        """
+        """Render one article card — pure flow, zero absolute set_xy."""
         tier_label, tier_colour = _auth_tier(article.get("authenticity_score", 0))
         source      = article.get("source", "?")
         source_type = article.get("source_type", "media")
@@ -354,12 +348,9 @@ class NeoSignalPDF(FPDF):
         self._dc(*C_DIVIDER)
         self.set_line_width(0.15)
 
-        # ── Left tier stripe rendered as a narrow coloured rect ──────────────
-        # We draw it after we know the full card height; here we use ln-based flow
-        # and draw a stripe using a rect before the first cell.
         card_top = self.get_y()
 
-        # Index + tier dot row
+        # Index + tier label
         self.set_font(self._fn, "B", 7)
         self._tc(*C_MUTED)
         self.set_fill_color(*bg)
@@ -369,7 +360,7 @@ class NeoSignalPDF(FPDF):
         self.cell(12, 5, self._t(f"  {tier_label[:4]}"), fill=False,
                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-        # ── Title ─────────────────────────────────────────────────────────────
+        # Title
         self.set_x(L_MAR + 6)
         self.set_font(self._fn, "B", 9)
         self._tc(*C_NAVY)
@@ -377,30 +368,24 @@ class NeoSignalPDF(FPDF):
         self.multi_cell(CONTENT_W - 6, 5, self._t(title),
                         fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-        # ── Meta row: source badge | extra sources | auth % | HN score ────────
+        # Meta row
         self.set_x(L_MAR + 6)
-        # Source badge
         self._fc(*badge_clr)
         self.set_font(self._fn, "B", 6)
         self._tc(*C_WHITE)
         badge = self._t(source[:30])
         bw    = self.get_string_width(badge) + 4
         self.cell(bw, 4.5, badge, fill=True)
-        # Cross-source count
         if n_src > 1:
             self.set_font(self._fn, size=6.5)
             self._tc(*tier_colour)
             self._fc(*bg)
-            self.cell(38, 4.5,
-                      self._t(f"  +{n_src-1} more source{'s' if n_src > 2 else ''}"),
-                      fill=True)
-        # Auth percentage (right side)
+            self.cell(38, 4.5, self._t(f"  +{n_src-1} source{'s' if n_src > 2 else ''}"), fill=True)
         self._fc(*tier_colour)
         self._tc(*C_WHITE)
         self.set_font(self._fn, "B", 6)
         auth_txt = self._t(f" {auth:.0%} ")
         self.cell(self.get_string_width(auth_txt) + 2, 4.5, auth_txt, fill=True)
-        # HN score if notable
         if score > 0:
             self._fc(*bg)
             self._tc(*C_MUTED)
@@ -408,37 +393,31 @@ class NeoSignalPDF(FPDF):
             self.cell(22, 4.5, self._t(f"  HN {score}"), fill=True)
         self.ln(4.5)
 
-        # ── Summary ───────────────────────────────────────────────────────────
+        # Summary
+        self.set_x(L_MAR + 6)
+        self._fc(*bg)
         if summary:
-            self.set_x(L_MAR + 6)
             self.set_font(self._fn, size=7.5)
             self._tc(60, 65, 88)
-            self._fc(*bg)
             self.multi_cell(CONTENT_W - 6, 4.5, self._t(summary),
                             fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         else:
-            self.set_x(L_MAR + 6)
             self.set_font(self._fn, "B", 7)
             self._tc(*C_MUTED)
-            self._fc(*bg)
-            self.cell(0, 4.5, "No summary available — click link for full article.",
+            self.cell(0, 4.5, "No summary — see link for full article.",
                       fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-        # ── URL ───────────────────────────────────────────────────────────────
+        # URL
         self.set_x(L_MAR + 6)
         self.set_font(self._fn, size=6.5)
         self._tc(*C_URL)
-        self._fc(*bg)
         display_url = url if len(url) <= 90 else url[:87] + "..."
         self.cell(0, 4.5, self._t(display_url),
                   fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-        # Left tier stripe (drawn retroactively over left margin)
-        card_bottom = self.get_y()
+        # Left tier stripe
         self._fc(*tier_colour)
-        self.rect(L_MAR, card_top, 2.5, card_bottom - card_top, "F")
-
-        # Bottom divider
+        self.rect(L_MAR, card_top, 2.5, self.get_y() - card_top, "F")
         self._dc(*C_DIVIDER)
         self.line(L_MAR, self.get_y(), PAGE_W - R_MAR, self.get_y())
         self.ln(3)
@@ -450,63 +429,71 @@ class NeoSignalPDF(FPDF):
 def load_history():
     """Return set of already-reported article IDs."""
     if HISTORY_FILE.exists():
-        return {l.strip() for l in HISTORY_FILE.read_text(encoding="utf-8").splitlines() if l.strip()}
+        return {
+            line.strip().split("\t")[0]
+            for line in HISTORY_FILE.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
     return set()
 
 
 def update_history(ids):
-    """Append reported IDs to history log."""
-    with open(HISTORY_FILE, "a", encoding="utf-8") as f:
-        for item_id in ids:
-            f.write(f"{item_id}\n")
+    """Append reported IDs with today's date to history.log."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    with open(HISTORY_FILE, "a", encoding="utf-8") as fh:
+        for article_id in ids:
+            fh.write(f"{article_id}\t{today}\n")
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# ── Entry point ───────────────────────────────────────────────────────────────
 
 def generate_report():
-    """Generate the premium PDF intelligence report. Returns PDF path or None."""
+    """Generate premium PDF report. Returns PDF path or None."""
     if not NEWS_FILE.exists():
         log.error("news_feed.json missing — run scraper first.")
         return None
     try:
         data = json.loads(NEWS_FILE.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        log.error("Invalid JSON: %s", exc)
+        log.error("Invalid JSON in news_feed.json: %s", exc)
         raise
 
     articles  = data.get("articles", []) if isinstance(data, dict) else data
     raw_count = data.get("meta", {}).get("raw_count", len(articles)) if isinstance(data, dict) else len(articles)
-
     if not articles:
-        log.info("No articles — skipping PDF.")
+        log.info("No articles — skipping PDF generation.")
         return None
 
-    history     = load_history()
-    new_arts    = [a for a in articles if a.get("id", a.get("url", "")) not in history]
+    history  = load_history()
+    new_arts = [a for a in articles if a.get("id", a.get("url", "")) not in history]
     if not new_arts:
-        log.info("All %d already reported — reusing all for today's report.", len(articles))
-        new_arts = articles   # always produce a PDF for email
+        log.info("All %d articles already reported — reusing all for today.", len(articles))
+        new_arts = articles
 
-    verified  = sum(1 for a in new_arts if a.get("authenticity_score", 0) >= 0.8)
-    confirmed = sum(1 for a in new_arts if 0.5 <= a.get("authenticity_score", 0) < 0.8)
-    emerging  = sum(1 for a in new_arts if a.get("authenticity_score", 0) < 0.5)
+    verified  = sum(1 for a in new_arts if a.get("authenticity_score", 0) >= cfg.pdf.tier_verified)
+    confirmed = sum(1 for a in new_arts
+                    if cfg.pdf.tier_confirmed <= a.get("authenticity_score", 0) < cfg.pdf.tier_verified)
+    emerging  = sum(1 for a in new_arts if a.get("authenticity_score", 0) < cfg.pdf.tier_confirmed)
     src_hit   = len({s for a in new_arts for s in a.get("all_sources", [a.get("source", "")])})
 
     issue_date = datetime.now().strftime("%d %B %Y")
-    pdf = NeoSignalPDF(issue_date)
+    pdf        = NeoSignalPDF(issue_date)
 
-    # Page 1 — cover
     pdf.cover_page(len(new_arts), verified, confirmed, emerging, src_hit, raw_count)
-
-    # Page 2 — source table
     pdf.source_table(new_arts)
 
-    # Pages 3+ — tiered articles
     tiers = [
-        ("Verified Intelligence", [a for a in new_arts if a.get("authenticity_score", 0) >= 0.8],    C_VERIFIED),
-        ("Confirmed Signals",     [a for a in new_arts if 0.5 <= a.get("authenticity_score", 0) < 0.8], C_CONFIRMED),
-        ("Emerging Signals",      [a for a in new_arts if a.get("authenticity_score", 0) < 0.5],      C_EMERGING),
+        ("Verified Intelligence",
+         [a for a in new_arts if a.get("authenticity_score", 0) >= cfg.pdf.tier_verified],
+         C_VERIFIED),
+        ("Confirmed Signals",
+         [a for a in new_arts if cfg.pdf.tier_confirmed <= a.get("authenticity_score", 0) < cfg.pdf.tier_verified],
+         C_CONFIRMED),
+        ("Emerging Signals",
+         [a for a in new_arts if a.get("authenticity_score", 0) < cfg.pdf.tier_confirmed],
+         C_EMERGING),
     ]
+
     pdf.add_page()
     idx = 1
     for tier_name, tier_arts, colour in tiers:

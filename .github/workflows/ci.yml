@@ -1,4 +1,4 @@
-name: CI
+name: CI — Tests & Lint
 
 on:
   push:
@@ -9,20 +9,15 @@ on:
 permissions:
   contents: read
 
-env:
-  PYTHON_VERSION: "3.11"
-
 jobs:
   test:
-    name: Tests (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version: ["3.11", "3.12"]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -30,28 +25,14 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
 
-      - name: Run tests
-        run: pytest tests/ -v --tb=short
+      - name: Dependency vulnerability audit
+        run: pip-audit -r requirements.txt
 
-  lint:
-    name: Lint (Pylint)
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: pip
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run pylint
+      - name: Lint — pylint
         run: pylint src/ tests/ --fail-under=9.0
+
+      - name: Tests
+        run: pytest tests/ -v --tb=short

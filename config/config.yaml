@@ -1,0 +1,236 @@
+# =============================================================================
+# NeoSignal v4.0 — Central Configuration
+# =============================================================================
+#
+# USAGE
+# ─────
+# All tunable parameters live here. No values should be hardcoded in source.
+#
+# Environment overrides
+# ─────────────────────
+# Any leaf value can be overridden via environment variable using the pattern:
+#   NEOSIGNAL__<SECTION>__<KEY>   (double underscore as separator)
+#
+# Examples:
+#   NEOSIGNAL__SCRAPER__HN_LIMIT=100
+#   NEOSIGNAL__SCORING__MIN_AUTHENTICITY=0.3
+#   NEOSIGNAL__HISTORY__MAX_AGE_DAYS=60
+#
+# Secrets (API keys, SMTP passwords, etc.) must NEVER be placed here.
+# Use GitHub Actions Secrets or local environment variables for those.
+# =============================================================================
+
+version: "4.0"
+
+# ── Scraper ────────────────────────────────────────────────────────────────
+scraper:
+  # HackerNews Firebase API
+  hn_endpoints:
+    show:  "https://hacker-news.firebaseio.com/v0/showstories.json"
+    top:   "https://hacker-news.firebaseio.com/v0/topstories.json"
+    new:   "https://hacker-news.firebaseio.com/v0/newstories.json"
+    item:  "https://hacker-news.firebaseio.com/v0/item/{}.json"
+  hn_limit: 60                    # Max story IDs to fetch per HN endpoint
+
+  # Reddit subreddits (public JSON API — no auth required)
+  # Add or remove subreddits here without touching source code
+  reddit_subs:
+    - url:    "https://www.reddit.com/r/artificial.json?limit=50&sort=hot"
+      name:   "r/artificial"
+    - url:    "https://www.reddit.com/r/MachineLearning.json?limit=50&sort=hot"
+      name:   "r/MachineLearning"
+    - url:    "https://www.reddit.com/r/singularity.json?limit=25&sort=hot"
+      name:   "r/singularity"
+    - url:    "https://www.reddit.com/r/LocalLLaMA.json?limit=25&sort=hot"
+      name:   "r/LocalLLaMA"
+
+  # RSS / Atom feeds
+  # Format: "Display Name": "Feed URL"
+  # Add any RSS/Atom feed here — it will be picked up automatically
+  rss_sources:
+    "TechCrunch AI":    "https://techcrunch.com/category/artificial-intelligence/feed/"
+    "VentureBeat AI":   "https://venturebeat.com/category/ai/feed/"
+    "MIT Tech Review":  "https://www.technologyreview.com/feed/"
+    "The Verge AI":     "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    "Wired AI":         "https://www.wired.com/feed/tag/artificial-intelligence/latest/rss"
+    "ArXiv CS.AI":      "http://export.arxiv.org/rss/cs.AI"
+
+  # HTTP request settings
+  request_timeout:      12        # Seconds per individual HTTP request
+  request_retries:       3        # Number of retry attempts on transient failure
+  request_backoff_base:  2        # Exponential backoff base in seconds (2^attempt)
+  request_backoff_max:  30        # Cap retry wait at this many seconds
+
+  # User-Agent sent with all requests (update version when releasing)
+  user_agent: "NeoSignal/4.0 (+https://github.com/NeoCodeSmith/NeoSignal)"
+
+  # Summary extraction
+  summary_max_chars: 280          # Maximum characters in extracted article summary
+  selftext_min_chars:  30         # Minimum Reddit selftext length to be included
+
+# ── Scoring ─────────────────────────────────────────────────────────────────
+scoring:
+  # Authenticity score formula:
+  #   score = base_score
+  #           + min(cross_source_bonus × (n_sources − 1), max_cross_source_bonus)
+  #           + diversity_bonus          (if community AND media sources both present)
+  #           + hn_score_bonus           (if top HN score ≥ hn_score_threshold)
+  base_score:               0.5
+  cross_source_bonus:       0.3
+  max_cross_source_bonus:   0.5
+  diversity_bonus:          0.1
+  hn_score_threshold:     100
+  hn_score_bonus:           0.1
+
+  # Stories with authenticity below this threshold are discarded
+  min_authenticity: 0.25
+
+  # Title similarity ratio for deduplication (SequenceMatcher)
+  # Lower = more aggressive merging; Higher = stricter separation
+  similarity_threshold: 0.45
+
+# ── History / deduplication log ─────────────────────────────────────────────
+history:
+  max_age_days: 30                # Entries older than this are pruned on each run
+  filename: "history.log"         # Relative to repo root
+
+# ── PDF Report ───────────────────────────────────────────────────────────────
+pdf:
+  # Font paths (DejaVu must be installed: apt-get install fonts-dejavu-core)
+  font_regular: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+  font_bold:    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+
+  # Fallback font (used when DejaVu is not available — ASCII sanitisation applied)
+  font_fallback: "Helvetica"
+
+  # Authenticity tier thresholds (for colouring in PDF)
+  tier_verified:  0.80
+  tier_confirmed: 0.50
+  # Below tier_confirmed = EMERGING
+
+# ── Digest ──────────────────────────────────────────────────────────────────
+digest:
+  lookback_days: 7                 # How many days back to include in weekly digest
+  max_per_category: 12             # Cap articles per category in digest
+
+# ── Keywords ────────────────────────────────────────────────────────────────
+keywords:
+  # AI filter — story must match at least one keyword to be included
+  # Case-insensitive, substring match
+  ai_filter:
+    - "ai"
+    - "artificial intelligence"
+    - "machine learning"
+    - "deep learning"
+    - "llm"
+    - "large language model"
+    - "neural network"
+    - "transformer"
+    - "gpt"
+    - "claude"
+    - "gemini"
+    - "llama"
+    - "mistral"
+    - "falcon"
+    - "openai"
+    - "anthropic"
+    - "deepmind"
+    - "meta ai"
+    - "hugging face"
+    - "diffusion"
+    - "stable diffusion"
+    - "midjourney"
+    - "rag"
+    - "vector"
+    - "embedding"
+    - "fine-tun"
+    - "reinforcement learning"
+    - "alignment"
+    - "nlp"
+    - "computer vision"
+    - "multimodal"
+    - "benchmark"
+    - "inference"
+    - "foundation model"
+    - "generative"
+    - "chatgpt"
+    - "copilot"
+    - "autonomous agent"
+    - "ai agent"
+    - "language model"
+
+  # Digest categories — each article is classified into the first matching category
+  # Keys are display names; values are keyword lists
+  digest_categories:
+    "Model Releases & Research":
+      - "model"
+      - "release"
+      - "paper"
+      - "benchmark"
+      - "arxiv"
+      - "research"
+      - "gpt"
+      - "claude"
+      - "gemini"
+      - "llama"
+      - "mistral"
+      - "falcon"
+      - "neural"
+      - "transformer"
+      - "diffusion"
+      - "multimodal"
+      - "fine-tun"
+
+    "Strategic & Business":
+      - "startup"
+      - "funding"
+      - "raises"
+      - "acquisition"
+      - "merger"
+      - "ipo"
+      - "partnership"
+      - "investment"
+      - "revenue"
+      - "valuation"
+      - "enterprise"
+      - "openai"
+      - "anthropic"
+      - "google"
+      - "microsoft"
+      - "meta"
+      - "amazon"
+
+    "Safety & Regulation":
+      - "safety"
+      - "alignment"
+      - "regulation"
+      - "ban"
+      - "risk"
+      - "policy"
+      - "governance"
+      - "legislation"
+      - "bias"
+      - "ethics"
+      - "responsible"
+      - "eu ai act"
+      - "executive order"
+      - "oversight"
+      - "accountability"
+
+    "Tools & Engineering":
+      - "open source"
+      - "framework"
+      - "library"
+      - "tool"
+      - "sdk"
+      - "api"
+      - "deployment"
+      - "inference"
+      - "rag"
+      - "vector"
+      - "embedding"
+      - "github"
+      - "hugging face"
+      - "langchain"
+      - "llamaindex"
+      - "vllm"
