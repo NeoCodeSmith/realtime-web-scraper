@@ -1,8 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-03-11T05:19:32.685928+00:00",
-    "article_count": 160,
-    "raw_count": 217
+    "generated_at": "2026-03-11T05:54:29.021512+00:00",
+    "article_count": 159,
+    "raw_count": 216,
+    "config_version": "4.0"
   },
   "articles": [
     {
@@ -14,13 +15,13 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.141676+00:00",
+      "scraped_at": "2026-03-11T05:54:24.949847+00:00",
       "authenticity_score": 1.0,
       "source_count": 3,
       "all_sources": [
         "ArXiv CS.AI",
-        "The Verge AI",
-        "TechCrunch AI"
+        "TechCrunch AI",
+        "The Verge AI"
       ]
     },
     {
@@ -32,12 +33,12 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.141627+00:00",
+      "scraped_at": "2026-03-11T05:54:24.949789+00:00",
       "authenticity_score": 0.8,
       "source_count": 2,
       "all_sources": [
-        "The Verge AI",
-        "TechCrunch AI"
+        "TechCrunch AI",
+        "The Verge AI"
       ]
     },
     {
@@ -49,7 +50,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.859820+00:00",
+      "scraped_at": "2026-03-11T05:54:24.741495+00:00",
       "authenticity_score": 0.8,
       "source_count": 2,
       "all_sources": [
@@ -66,12 +67,12 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.981662+00:00",
+      "scraped_at": "2026-03-11T05:54:24.810176+00:00",
       "authenticity_score": 0.8,
       "source_count": 2,
       "all_sources": [
-        "MIT Tech Review",
-        "ArXiv CS.AI"
+        "ArXiv CS.AI",
+        "MIT Tech Review"
       ]
     },
     {
@@ -83,12 +84,12 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.981903+00:00",
+      "scraped_at": "2026-03-11T05:54:24.810472+00:00",
       "authenticity_score": 0.8,
       "source_count": 2,
       "all_sources": [
-        "MIT Tech Review",
-        "ArXiv CS.AI"
+        "ArXiv CS.AI",
+        "MIT Tech Review"
       ]
     },
     {
@@ -98,9 +99,9 @@
       "summary": "I found that duplicating a specific block of 7 middle layers in Qwen2-72B, without modifying any weights, improved performance across all Open LLM Leaderboard benchmarks and took #1. As of 2026, the top 4 models on that leaderboard are still descendants. The weird finding:...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 349,
+      "score": 357,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:22.081045+00:00",
+      "scraped_at": "2026-03-11T05:54:18.476677+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -116,7 +117,7 @@
       "source_type": "community",
       "score": 103,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:26.640086+00:00",
+      "scraped_at": "2026-03-11T05:54:22.966285+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -132,7 +133,7 @@
       "source_type": "community",
       "score": 93,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:24.009984+00:00",
+      "scraped_at": "2026-03-11T05:54:20.332052+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -148,7 +149,7 @@
       "source_type": "community",
       "score": 91,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:27.148723+00:00",
+      "scraped_at": "2026-03-11T05:54:23.455220+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -164,7 +165,7 @@
       "source_type": "community",
       "score": 26,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:26.149364+00:00",
+      "scraped_at": "2026-03-11T05:54:22.576633+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -180,23 +181,7 @@
       "source_type": "community",
       "score": 5,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:27.865846+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "bb7e94fc02c5",
-      "title": "Show HN: Free open-source churn prediction for SaaS–Stripe and LLM interventions",
-      "url": "https://github.com/ShreyasDasari/churnguard-ai",
-      "summary": "",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 5,
-      "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:27.958652+00:00",
+      "scraped_at": "2026-03-11T05:54:24.228771+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -212,7 +197,7 @@
       "source_type": "community",
       "score": 4,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:25.543472+00:00",
+      "scraped_at": "2026-03-11T05:54:21.896677+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -228,7 +213,7 @@
       "source_type": "community",
       "score": 3,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:26.254227+00:00",
+      "scraped_at": "2026-03-11T05:54:22.774924+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -244,7 +229,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678308+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624840+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -260,7 +245,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678130+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624564+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -276,7 +261,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678147+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624613+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -292,7 +277,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678168+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624641+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -308,7 +293,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678211+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624706+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -324,7 +309,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678232+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624736+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -340,7 +325,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678246+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624758+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -356,7 +341,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678288+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624817+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -372,7 +357,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678322+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624861+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -388,7 +373,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678363+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624924+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -404,7 +389,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.678406+00:00",
+      "scraped_at": "2026-03-11T05:54:24.624992+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -420,7 +405,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.857357+00:00",
+      "scraped_at": "2026-03-11T05:54:24.738709+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -436,7 +421,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.858020+00:00",
+      "scraped_at": "2026-03-11T05:54:24.739435+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -452,7 +437,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.858577+00:00",
+      "scraped_at": "2026-03-11T05:54:24.740080+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -468,7 +453,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.859306+00:00",
+      "scraped_at": "2026-03-11T05:54:24.740896+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -484,7 +469,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.860276+00:00",
+      "scraped_at": "2026-03-11T05:54:24.742043+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -500,7 +485,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.860580+00:00",
+      "scraped_at": "2026-03-11T05:54:24.742395+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -516,7 +501,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.981747+00:00",
+      "scraped_at": "2026-03-11T05:54:24.810303+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -532,7 +517,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.981837+00:00",
+      "scraped_at": "2026-03-11T05:54:24.810392+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -548,7 +533,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:28.981871+00:00",
+      "scraped_at": "2026-03-11T05:54:24.810432+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -564,7 +549,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.141518+00:00",
+      "scraped_at": "2026-03-11T05:54:24.949634+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -580,7 +565,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.141572+00:00",
+      "scraped_at": "2026-03-11T05:54:24.949718+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -596,7 +581,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.141716+00:00",
+      "scraped_at": "2026-03-11T05:54:24.949894+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -612,7 +597,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.141752+00:00",
+      "scraped_at": "2026-03-11T05:54:24.949939+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -628,7 +613,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648156+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948232+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -644,7 +629,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648207+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948321+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -660,7 +645,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648266+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948388+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -676,7 +661,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648315+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948443+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -692,7 +677,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648377+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948517+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -708,7 +693,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653301+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954242+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -724,7 +709,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648490+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948668+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -740,7 +725,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648538+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948725+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -756,7 +741,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648599+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948799+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -772,7 +757,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648667+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948878+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -788,7 +773,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648734+00:00",
+      "scraped_at": "2026-03-11T05:54:25.948955+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -804,7 +789,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653807+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954873+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -820,7 +805,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649703+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950101+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -836,7 +821,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648907+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949132+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -852,7 +837,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.648972+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949202+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -868,7 +853,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653245+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954173+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -884,7 +869,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651263+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951938+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -900,7 +885,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649115+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949366+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -916,7 +901,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649189+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949443+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -932,7 +917,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649287+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949559+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -948,7 +933,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649336+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949666+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -964,7 +949,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652588+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953440+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -980,7 +965,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649440+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949801+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -996,7 +981,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649494+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949862+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1012,7 +997,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649540+00:00",
+      "scraped_at": "2026-03-11T05:54:25.949915+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1028,7 +1013,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649641+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950034+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1044,7 +1029,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649791+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950192+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1060,7 +1045,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650176+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950670+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1076,7 +1061,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649905+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950319+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1092,7 +1077,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.649946+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950366+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1108,7 +1093,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650010+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950431+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1124,7 +1109,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650069+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950498+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1140,7 +1125,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650118+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950558+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1156,7 +1141,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650210+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950719+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1172,7 +1157,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650265+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950786+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1188,7 +1173,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650387+00:00",
+      "scraped_at": "2026-03-11T05:54:25.950941+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1204,7 +1189,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654082+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955186+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1220,7 +1205,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650501+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951068+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1236,7 +1221,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650554+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951127+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1252,7 +1237,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650686+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951287+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1268,7 +1253,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650749+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951355+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1284,7 +1269,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650829+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951432+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1300,7 +1285,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650890+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951496+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1316,7 +1301,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650950+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951561+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1332,7 +1317,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.650988+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951627+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1348,7 +1333,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651095+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951754+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1364,7 +1349,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651142+00:00",
+      "scraped_at": "2026-03-11T05:54:25.951803+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1380,7 +1365,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651332+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952012+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1396,7 +1381,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651396+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952092+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1412,7 +1397,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652031+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952811+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1428,7 +1413,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651500+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952215+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1444,7 +1429,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651552+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952278+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1460,7 +1445,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651604+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952340+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1476,7 +1461,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651646+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952387+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1492,7 +1477,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651762+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952523+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1508,7 +1493,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651897+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952667+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1524,7 +1509,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651935+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952712+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1540,7 +1525,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.651977+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952759+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1556,7 +1541,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652118+00:00",
+      "scraped_at": "2026-03-11T05:54:25.952910+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1572,7 +1557,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652252+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953062+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1588,7 +1573,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652312+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953127+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1604,7 +1589,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652420+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953243+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1620,7 +1605,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652495+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953328+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1636,7 +1621,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652539+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953382+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1652,7 +1637,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652636+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953492+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1668,7 +1653,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652729+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953621+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1684,7 +1669,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652801+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953677+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1700,7 +1685,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.652852+00:00",
+      "scraped_at": "2026-03-11T05:54:25.953730+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1716,7 +1701,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653193+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954112+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1732,7 +1717,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656167+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957519+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1748,7 +1733,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653424+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954380+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1764,7 +1749,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653476+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954435+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1780,7 +1765,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653539+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954508+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1796,7 +1781,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653673+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954721+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1812,7 +1797,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653738+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954808+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1828,7 +1813,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653852+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954927+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1844,7 +1829,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.653907+00:00",
+      "scraped_at": "2026-03-11T05:54:25.954989+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1860,7 +1845,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654025+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955126+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1876,7 +1861,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654151+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955254+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1892,7 +1877,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654200+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955307+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1908,7 +1893,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654250+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955360+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1924,7 +1909,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654318+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955431+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1940,7 +1925,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654371+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955486+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1956,7 +1941,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654432+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955550+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1972,7 +1957,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654499+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955639+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -1988,7 +1973,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654553+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955699+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2004,7 +1989,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654619+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955772+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2020,7 +2005,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654688+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955849+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2036,7 +2021,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654753+00:00",
+      "scraped_at": "2026-03-11T05:54:25.955924+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2052,7 +2037,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.654972+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956137+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2068,7 +2053,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655104+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956293+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2084,7 +2069,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655215+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956415+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2100,7 +2085,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655264+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956470+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2116,7 +2101,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655300+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956513+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2132,7 +2117,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655360+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956589+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2148,7 +2133,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655418+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956662+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2164,7 +2149,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655474+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956724+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2180,7 +2165,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655523+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956787+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2196,7 +2181,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655587+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956860+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2212,7 +2197,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655626+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956909+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2228,7 +2213,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655696+00:00",
+      "scraped_at": "2026-03-11T05:54:25.956992+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2244,7 +2229,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655746+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957048+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2260,7 +2245,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655870+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957174+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2276,7 +2261,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.655915+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957226+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2292,7 +2277,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656026+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957353+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2308,7 +2293,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656075+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957408+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2324,7 +2309,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656222+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957599+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2340,7 +2325,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656280+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957680+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2356,7 +2341,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656327+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957734+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2372,7 +2357,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656395+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957810+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2388,7 +2373,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656506+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957933+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2404,7 +2389,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656561+00:00",
+      "scraped_at": "2026-03-11T05:54:25.957994+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2420,7 +2405,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656685+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958137+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2436,7 +2421,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656743+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958197+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2452,7 +2437,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656873+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958320+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2468,7 +2453,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.656937+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958386+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2484,7 +2469,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.657008+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958464+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2500,7 +2485,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.657054+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958514+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2516,7 +2501,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.657100+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958566+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2532,7 +2517,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.657155+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958670+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2548,7 +2533,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.657221+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958744+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -2564,7 +2549,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-11",
-      "scraped_at": "2026-03-11T05:19:29.657307+00:00",
+      "scraped_at": "2026-03-11T05:54:25.958827+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
