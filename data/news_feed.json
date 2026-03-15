@@ -1,11 +1,45 @@
 {
   "meta": {
-    "generated_at": "2026-03-14T04:58:08.427023+00:00",
-    "article_count": 48,
-    "raw_count": 59,
+    "generated_at": "2026-03-15T05:18:36.647623+00:00",
+    "article_count": 45,
+    "raw_count": 63,
     "config_version": "4.0"
   },
   "articles": [
+    {
+      "id": "ea085ba9392e",
+      "title": "Show HN: Axe – A 12MB binary that replaces your AI framework",
+      "url": "https://github.com/jrswab/axe",
+      "summary": "I built Axe because I got tired of every AI tool trying to be a chatbot. Most frameworks want a long-lived session with a massive context window doing everything at once. That's expensive, slow, and fragile. Good software is small, focused, and composable... AI agents should be...",
+      "source": "HackerNews",
+      "source_type": "community",
+      "score": 219,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:30.482976+00:00",
+      "authenticity_score": 1.0,
+      "source_count": 2,
+      "all_sources": [
+        "The Verge AI",
+        "HackerNews"
+      ]
+    },
+    {
+      "id": "bda3f6f176a4",
+      "title": "Show HN: Got tired of AI copilots just autocompleting, and built Glass Arc",
+      "url": "https://news.ycombinator.com/item?id=47376342",
+      "summary": "Human-made glass is thousands of years old. But it’s now poised to find its way into the AI chips used in the world’s newest and largest data centers. This year, a South Korean company called Absolics is planning to start commercial production of special glass panels designed to...",
+      "source": "HackerNews",
+      "source_type": "community",
+      "score": 4,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:32.681160+00:00",
+      "authenticity_score": 0.9,
+      "source_count": 2,
+      "all_sources": [
+        "MIT Tech Review",
+        "HackerNews"
+      ]
+    },
     {
       "id": "01c089cc010c",
       "title": "Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages",
@@ -14,8 +48,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701561+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028358+00:00",
       "authenticity_score": 0.8,
       "source_count": 2,
       "all_sources": [
@@ -24,31 +58,15 @@
       ]
     },
     {
-      "id": "7c5e04715a22",
-      "title": "Show HN: How I topped the HuggingFace open LLM leaderboard on two gaming GPUs",
-      "url": "https://dnhkng.github.io/posts/rys/",
-      "summary": "I found that duplicating a specific block of 7 middle layers in Qwen2-72B, without modifying any weights, improved performance across all Open LLM Leaderboard benchmarks and took #1. As of 2026, the top 4 models on that leaderboard are still descendants. The weird finding:...",
+      "id": "7b96ba81685d",
+      "title": "Show HN: OneCLI – Vault for AI Agents in Rust",
+      "url": "https://github.com/onecli/onecli",
+      "summary": "Hi HN, I built Ink, a full stack deployment platform where the primary users are AI agents, not humans. We all know AI can write code, but deploying them still requires a human to wire it up: hosting, databases, DNS, and secrets. Ink gives agents those tools directly. The agent...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 459,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:05.034758+00:00",
-      "authenticity_score": 0.6,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "ea085ba9392e",
-      "title": "Show HN: Axe – A 12MB binary that replaces your AI framework",
-      "url": "https://github.com/jrswab/axe",
-      "summary": "I built Axe because I got tired of every AI tool trying to be a chatbot. Most frameworks want a long-lived session with a massive context window doing everything at once. That's expensive, slow, and fragile. Good software is small, focused, and composable... AI agents should be...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 212,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:01.483238+00:00",
+      "score": 160,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:31.692370+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -59,12 +77,12 @@
       "id": "88e613d192a9",
       "title": "Show HN: Open-source browser for AI agents",
       "url": "https://github.com/theredsix/agent-browser-protocol",
-      "summary": "Hi HN, I built Build4Me to address a trust problem in diaspora-funded construction projects. Many families send money home to build houses but have no reliable way to verify that work is actually being done. Photos can be reused, progress exaggerated, or projects abandoned after...",
+      "summary": "Hi HN, I forked chromium and built agent-browser-protocol (ABP) after noticing that most browser-agent failures aren’t really about the model misunderstanding the page. Instead, the problem is that the model is reasoning from a stale state. ABP is designed to keep the acting...",
       "source": "HackerNews",
       "source_type": "community",
       "score": 154,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:03.212804+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:32.353709+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -78,9 +96,9 @@
       "summary": "We built rudel.ai after realizing we had no visibility into our own Claude Code sessions. We were using it daily but had no idea which sessions were efficient, why some got abandoned, or whether we were actually improving over time. So we built an analytics layer for it. After...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 140,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:01.962083+00:00",
+      "score": 143,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:31.803465+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -94,9 +112,9 @@
       "summary": "Hi HN, I’m a chemical engineer and I manage logistics at a refinery down in Texas. Whenever I try to explain downstream operations to people outside the industry (including my kids), I usually get blank stares. I wanted to build something that visualizes the concepts and...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 125,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:03.801889+00:00",
+      "score": 126,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:32.886748+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -111,8 +129,8 @@
       "source": "HackerNews",
       "source_type": "community",
       "score": 125,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:04.846077+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:34.647826+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -126,57 +144,9 @@
       "summary": "We built an open-source proxy that sits between coding agents (Claude Code, OpenClaw, etc.) and the LLM, compressing tool outputs before they enter the context window. Demo: https://www.youtube.com/watch?v=-vFZ6MPrwjw#t=9s . Motivation: Agents are terrible at managing context. A...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 66,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:00.876261+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "4f54c99fedb3",
-      "title": "Show HN: Slop or not – can you tell AI writing from human in everyday contexts?",
-      "url": "https://slop-or-not.space",
-      "summary": "I'm a VP of Engineering with 20 years in the field. I've been thinking deeply on why AI is breaking every engineering practice, and it led me to the conclusion that the Agile Manifesto's values need updating. The core argument: AI made producing software cheap, but understanding...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 18,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:06.127831+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "429781847885",
-      "title": "Show HN: Stratum – SQL that branches and beats DuckDB on 35/46 1T benchmarks",
-      "url": "https://datahike.io/notes/stratum-analytics-engine/",
-      "summary": "",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 12,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:06.233660+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "aa0ecbc56c40",
-      "title": "Show HN: Run an Agent Council of LLMs that debate and synthesize answers",
-      "url": "https://github.com/JitseLambrichts/MultiMind-AI",
-      "summary": "I built a local-first UI that adds two reasoning architectures on top of small models like Qwen, Llama and Mistral: a sequential Thinking Pipeline (Plan → Execute → Critique) and a parallel Agent Council where multiple expert models debate in parallel and a Judge synthesizes the...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 7,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:05.451124+00:00",
+      "score": 89,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:29.411862+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -187,12 +157,28 @@
       "id": "9d13b7bcc621",
       "title": "Show HN: DJX – Convention over Configuration for Django (Rails-Inspired CLI)",
       "url": "https://news.ycombinator.com/item?id=47368925",
-      "summary": "Hi HN, I'm a self-taught developer from Malawi, and I built DJX because I was tired of writing the same Django boilerplate over and over. Django is powerful, but starting a new feature means manually creating models, views, templates, URLs, and wiring everything together. Rails...",
+      "summary": "Hi HN, I built Build4Me to address a trust problem in diaspora-funded construction projects. Many families send money home to build houses but have no reliable way to verify that work is actually being done. Photos can be reused, progress exaggerated, or projects abandoned after...",
+      "source": "HackerNews",
+      "source_type": "community",
+      "score": 5,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:34.424294+00:00",
+      "authenticity_score": 0.5,
+      "source_count": 1,
+      "all_sources": [
+        "HackerNews"
+      ]
+    },
+    {
+      "id": "37095d25dde9",
+      "title": "Show HN: Hedra – an open-world 3D game I wrote from scratch before LLMs",
+      "url": "https://github.com/maxilevi/project-hedra",
+      "summary": "With the current inflow of LLM aided software, I thought I would share a cool \"hand-coded\" project from the previous era (I wrote this in highschool so roughly ~8 years ago). Hedra is an open world 3d game written from scratch using only OpenGL and C#. It has quite a few cool...",
       "source": "HackerNews",
       "source_type": "community",
       "score": 4,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:03.022372+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:32.145526+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -200,15 +186,15 @@
       ]
     },
     {
-      "id": "37c574645d7b",
-      "title": "Show HN: I wrote my first neural network",
-      "url": "https://github.com/stupid-genius/Perceptron",
-      "summary": "I have been interested in neural nets since the 90's. I've done quite a bit of reading, but never gotten around to writing code. I used Gemini in place of Wikipedia to fill in the gaps of my knowledge. The coolest part of this was learning about dual numbers. You can see in...",
+      "id": "55a28a18b472",
+      "title": "Show HN: ngrep – grep plus word embeddings (Rust)",
+      "url": "https://github.com/0xNaN/ngrep",
+      "summary": "I got curious about a simple question: regular expressions are purely syntactic, but what happens if you add just a little bit of semantics? To answer, I ended up building ngrep: a grep-like tool that extends regular expressions with a new operator ~(token) that matches a word...",
       "source": "HackerNews",
       "source_type": "community",
       "score": 3,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:01.387254+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:30.377037+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -216,19 +202,51 @@
       ]
     },
     {
-      "id": "d1a3b241e02f",
-      "title": "Show HN: A single CLI to manage llama.cpp/vLLM/Ollama models",
-      "url": "https://github.com/av/harbor/releases/tag/v0.4.4",
-      "summary": "Harbor crossed its 127th (next one is special) release. One notable added feature is ability to manage all my LLMs with a single CLI. # list all models harbor ls # pairs well with jq harbor ls --json # Ollama harbor pull qwen3.5:35b # llama.cpp harbor pull...",
+      "id": "8b66db11d929",
+      "title": "Show HN: AI coding agent for VS Code with pay-as-you-go pricing- no subscription",
+      "url": "https://www.llmonestop.com/#pricing",
+      "summary": "I built LLM OneStop Code—an AI coding agent for VS Code that works like Claude Code or Cursor, but with one key difference: pure pay-as-you-go pricing. No monthly subscription required. The problem with existing tools: - Cursor: $20/month for Pro (even if you barely use it) -...",
       "source": "HackerNews",
       "source_type": "community",
       "score": 2,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:02.339389+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:30.160220+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
         "HackerNews"
+      ]
+    },
+    {
+      "id": "4c203bf56a17",
+      "title": "Show HN: Chat Daddy – all your LLM chats in a super light terminal",
+      "url": "https://lucianlabs.ca/blog/chat-daddy.html",
+      "summary": "Claude kept crashing, stupid electron apps. So I made a super light terminal program in rust. As a plus, it syncs across all your local machines too. feel free to clone it and make it your own: https://github.com/ELI7VH/chat-daddy",
+      "source": "HackerNews",
+      "source_type": "community",
+      "score": 2,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:34.535693+00:00",
+      "authenticity_score": 0.5,
+      "source_count": 1,
+      "all_sources": [
+        "HackerNews"
+      ]
+    },
+    {
+      "id": "bd520d72335e",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others",
+      "url": "https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/",
+      "summary": "Learn how to use Spotify, Canva, Figma, Expedia, and other apps directly in ChatGPT.",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "score": 0,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544033+00:00",
+      "authenticity_score": 0.5,
+      "source_count": 1,
+      "all_sources": [
+        "TechCrunch AI"
       ]
     },
     {
@@ -239,8 +257,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.204817+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544086+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -255,8 +273,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.204869+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544117+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -271,8 +289,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.204898+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544140+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -287,8 +305,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.204924+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544164+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -303,8 +321,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.204948+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544190+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -319,8 +337,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.205004+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544238+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -335,8 +353,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.205053+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544303+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -351,8 +369,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.205123+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544372+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -367,40 +385,8 @@
       "source": "TechCrunch AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.205146+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "TechCrunch AI"
-      ]
-    },
-    {
-      "id": "eceed6e16abf",
-      "title": "A writer is suing Grammarly for turning her and other authors into ‘AI editors’ without consent",
-      "url": "https://techcrunch.com/2026/03/12/a-writer-is-suing-grammarly-for-turning-her-and-other-authors-into-ai-editors-without-consent/",
-      "summary": "Journalist Julia Angwin is leading a class action lawsuit against Grammarly for violating her privacy and publicity rights.",
-      "source": "TechCrunch AI",
-      "source_type": "media",
-      "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.205168+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "TechCrunch AI"
-      ]
-    },
-    {
-      "id": "278f0eec55f3",
-      "title": "Gumloop lands $50M from Benchmark to turn every employee into an AI agent builder",
-      "url": "https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/",
-      "summary": "As companies race to adopt AI, Benchmark general partner Everett Randle believes the key to success lies in empowering every worker with AI superpowers, and Gumloop’s intuitive agent builder is an example of the kind of tool that will unlock that potential.",
-      "source": "TechCrunch AI",
-      "source_type": "media",
-      "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.205198+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.544393+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -415,8 +401,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.431918+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.712383+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -431,8 +417,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.432604+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.713040+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -447,8 +433,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.433177+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.713602+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -463,8 +449,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.433942+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.714331+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -479,8 +465,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.434432+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.714816+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -495,8 +481,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.434921+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.715260+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -511,8 +497,8 @@
       "source": "VentureBeat AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.435250+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.715584+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -527,8 +513,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542499+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851295+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -543,24 +529,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542570+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "MIT Tech Review"
-      ]
-    },
-    {
-      "id": "0e50eca61b90",
-      "title": "Future AI chips could be built on glass",
-      "url": "https://www.technologyreview.com/2026/03/13/1134230/future-ai-chips-could-be-built-on-glass/",
-      "summary": "Human-made glass is thousands of years old. But it’s now poised to find its way into the AI chips used in the world’s newest and largest data centers. This year, a South Korean company called Absolics is planning to start commercial production of special glass panels designed to...",
-      "source": "MIT Tech Review",
-      "source_type": "media",
-      "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542614+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851373+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -575,8 +545,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542652+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851455+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -591,8 +561,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542701+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851504+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -607,8 +577,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542747+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851550+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -623,8 +593,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542789+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851591+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -639,8 +609,8 @@
       "source": "MIT Tech Review",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.542826+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:35.851628+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -655,8 +625,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701481+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028263+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -671,8 +641,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701617+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028413+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -687,8 +657,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701666+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028462+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -703,8 +673,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701720+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028515+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -719,8 +689,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701768+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028560+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -735,24 +705,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701868+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "The Verge AI"
-      ]
-    },
-    {
-      "id": "eef8ec8218b7",
-      "title": "Perplexity&#8217;s Personal Computer turns your spare Mac into an AI agent",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/893536/perplexitys-personal-computer-turns-your-spare-mac-into-an-ai-agent",
-      "summary": "Perplexity wants to be more than just an answer engine. On Wednesday, it launched Personal Computer, a new AI agent tool that can turn a spare Mac into a locally run AI system, pitching it as \"a digital proxy for you.\" Personal Computer will run 24/7 on a dedicated device on...",
-      "source": "The Verge AI",
-      "source_type": "media",
-      "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701912+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028657+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -767,8 +721,8 @@
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
-      "date": "2026-03-14",
-      "scraped_at": "2026-03-14T04:58:07.701956+00:00",
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T05:18:36.028740+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
