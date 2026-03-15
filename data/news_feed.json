@@ -1,28 +1,11 @@
 {
   "meta": {
-    "generated_at": "2026-03-15T05:18:36.647623+00:00",
-    "article_count": 45,
-    "raw_count": 63,
+    "generated_at": "2026-03-15T15:52:58.266280+00:00",
+    "article_count": 42,
+    "raw_count": 60,
     "config_version": "4.0"
   },
   "articles": [
-    {
-      "id": "ea085ba9392e",
-      "title": "Show HN: Axe – A 12MB binary that replaces your AI framework",
-      "url": "https://github.com/jrswab/axe",
-      "summary": "I built Axe because I got tired of every AI tool trying to be a chatbot. Most frameworks want a long-lived session with a massive context window doing everything at once. That's expensive, slow, and fragile. Good software is small, focused, and composable... AI agents should be...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 219,
-      "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:30.482976+00:00",
-      "authenticity_score": 1.0,
-      "source_count": 2,
-      "all_sources": [
-        "The Verge AI",
-        "HackerNews"
-      ]
-    },
     {
       "id": "bda3f6f176a4",
       "title": "Show HN: Got tired of AI copilots just autocompleting, and built Glass Arc",
@@ -32,12 +15,12 @@
       "source_type": "community",
       "score": 4,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:32.681160+00:00",
+      "scraped_at": "2026-03-15T15:52:56.863426+00:00",
       "authenticity_score": 0.9,
       "source_count": 2,
       "all_sources": [
-        "MIT Tech Review",
-        "HackerNews"
+        "HackerNews",
+        "MIT Tech Review"
       ]
     },
     {
@@ -49,7 +32,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028358+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860650+00:00",
       "authenticity_score": 0.8,
       "source_count": 2,
       "all_sources": [
@@ -58,31 +41,15 @@
       ]
     },
     {
-      "id": "7b96ba81685d",
-      "title": "Show HN: OneCLI – Vault for AI Agents in Rust",
-      "url": "https://github.com/onecli/onecli",
-      "summary": "Hi HN, I built Ink, a full stack deployment platform where the primary users are AI agents, not humans. We all know AI can write code, but deploying them still requires a human to wire it up: hosting, databases, DNS, and secrets. Ink gives agents those tools directly. The agent...",
+      "id": "ea085ba9392e",
+      "title": "Show HN: Axe – A 12MB binary that replaces your AI framework",
+      "url": "https://github.com/jrswab/axe",
+      "summary": "I kept running into the same problem while building AI agents: every agent that needs email ends up sharing my personal inbox or a single company domain. That breaks attribution, creates deliverability risk, and makes it impossible to test sender identities per agent. So I built...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 160,
+      "score": 222,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:31.692370+00:00",
-      "authenticity_score": 0.6,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "88e613d192a9",
-      "title": "Show HN: Open-source browser for AI agents",
-      "url": "https://github.com/theredsix/agent-browser-protocol",
-      "summary": "Hi HN, I forked chromium and built agent-browser-protocol (ABP) after noticing that most browser-agent failures aren’t really about the model misunderstanding the page. Instead, the problem is that the model is reasoning from a stale state. ABP is designed to keep the acting...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 154,
-      "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:32.353709+00:00",
+      "scraped_at": "2026-03-15T15:52:53.521014+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -93,12 +60,12 @@
       "id": "8cad3b2125da",
       "title": "Show HN: Rudel – Claude Code Session Analytics",
       "url": "https://github.com/obsessiondb/rudel",
-      "summary": "We built rudel.ai after realizing we had no visibility into our own Claude Code sessions. We were using it daily but had no idea which sessions were efficient, why some got abandoned, or whether we were actually improving over time. So we built an analytics layer for it. After...",
+      "summary": "I built a Claude Code skill that turns your terminal into a poker table. You play No-Limit Texas Hold'em against three AI opponents, each running as a separate Claude subagent with its own personality and hidden cards. The main agent acts as dealer, manages the game state, and...",
       "source": "HackerNews",
       "source_type": "community",
       "score": 143,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:31.803465+00:00",
+      "scraped_at": "2026-03-15T15:52:54.230498+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -114,23 +81,7 @@
       "source_type": "community",
       "score": 126,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:32.886748+00:00",
-      "authenticity_score": 0.6,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "c62e610c8de1",
-      "title": "Show HN: A context-aware permission guard for Claude Code",
-      "url": "https://github.com/manuelschipper/nah/",
-      "summary": "We needed something like --dangerously-skip-permissions that doesn’t nuke your untracked files, exfiltrate your keys, or install malware. Claude Code's permission system is allow-or-deny per tool, but that doesn’t really scale. Deleting some files is fine sometimes. And git...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 125,
-      "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:34.647826+00:00",
+      "scraped_at": "2026-03-15T15:52:55.319129+00:00",
       "authenticity_score": 0.6,
       "source_count": 1,
       "all_sources": [
@@ -144,9 +95,9 @@
       "summary": "We built an open-source proxy that sits between coding agents (Claude Code, OpenClaw, etc.) and the LLM, compressing tool outputs before they enter the context window. Demo: https://www.youtube.com/watch?v=-vFZ6MPrwjw#t=9s . Motivation: Agents are terrible at managing context. A...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 89,
+      "score": 91,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:29.411862+00:00",
+      "scraped_at": "2026-03-15T15:52:53.184569+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -154,15 +105,31 @@
       ]
     },
     {
-      "id": "9d13b7bcc621",
-      "title": "Show HN: DJX – Convention over Configuration for Django (Rails-Inspired CLI)",
-      "url": "https://news.ycombinator.com/item?id=47368925",
-      "summary": "Hi HN, I built Build4Me to address a trust problem in diaspora-funded construction projects. Many families send money home to build houses but have no reliable way to verify that work is actually being done. Photos can be reused, progress exaggerated, or projects abandoned after...",
+      "id": "888e5fb3a4bd",
+      "title": "Show HN: GrobPaint: Somewhere Between MS Paint and Paint.net",
+      "url": "https://github.com/groverburger/grobpaint",
+      "summary": "I have been interested in neural nets since the 90's. I've done quite a bit of reading, but never gotten around to writing code. I used Gemini in place of Wikipedia to fill in the gaps of my knowledge. The coolest part of this was learning about dual numbers. You can see in...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 5,
+      "score": 52,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:34.424294+00:00",
+      "scraped_at": "2026-03-15T15:52:52.913599+00:00",
+      "authenticity_score": 0.5,
+      "source_count": 1,
+      "all_sources": [
+        "HackerNews"
+      ]
+    },
+    {
+      "id": "cdf64db46fe2",
+      "title": "Show HN: Zap Code – AI code generator that teaches kids real HTML/CSS/JS",
+      "url": "https://www.zapcode.dev",
+      "summary": "Zap Code generates working HTML/CSS/JS from plain English descriptions, designed for kids ages 8-16. The core loop: kid types \"make a space shooter game\", AI generates the code, live preview renders it immediately. Three interaction modes - visual-only tweaks, read-only code...",
+      "source": "HackerNews",
+      "source_type": "community",
+      "score": 10,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T15:52:56.166493+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -176,25 +143,9 @@
       "summary": "With the current inflow of LLM aided software, I thought I would share a cool \"hand-coded\" project from the previous era (I wrote this in highschool so roughly ~8 years ago). Hedra is an open world 3d game written from scratch using only OpenGL and C#. It has quite a few cool...",
       "source": "HackerNews",
       "source_type": "community",
-      "score": 4,
+      "score": 6,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:32.145526+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "HackerNews"
-      ]
-    },
-    {
-      "id": "55a28a18b472",
-      "title": "Show HN: ngrep – grep plus word embeddings (Rust)",
-      "url": "https://github.com/0xNaN/ngrep",
-      "summary": "I got curious about a simple question: regular expressions are purely syntactic, but what happens if you add just a little bit of semantics? To answer, I ended up building ngrep: a grep-like tool that extends regular expressions with a new operator ~(token) that matches a word...",
-      "source": "HackerNews",
-      "source_type": "community",
-      "score": 3,
-      "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:30.377037+00:00",
+      "scraped_at": "2026-03-15T15:52:54.713144+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -210,7 +161,7 @@
       "source_type": "community",
       "score": 2,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:30.160220+00:00",
+      "scraped_at": "2026-03-15T15:52:54.908781+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -218,15 +169,15 @@
       ]
     },
     {
-      "id": "4c203bf56a17",
-      "title": "Show HN: Chat Daddy – all your LLM chats in a super light terminal",
-      "url": "https://lucianlabs.ca/blog/chat-daddy.html",
-      "summary": "Claude kept crashing, stupid electron apps. So I made a super light terminal program in rust. As a plus, it syncs across all your local machines too. feel free to clone it and make it your own: https://github.com/ELI7VH/chat-daddy",
+      "id": "d06b1aa638e2",
+      "title": "Show HN: Auto-Save Claude Code Sessions to GitHub Projects",
+      "url": "https://github.com/ej31/claude-session-tracker",
+      "summary": "I wanted a way to preserve Claude Code sessions. Once a session ends, the conversation is gone — no searchable history, no way to trace back why a decision was made in a specific PR. The idea is simple: one GitHub Issue per session, automatically linked to a GitHub Projects...",
       "source": "HackerNews",
       "source_type": "community",
       "score": 2,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:34.535693+00:00",
+      "scraped_at": "2026-03-15T15:52:55.932048+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -242,7 +193,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544033+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440655+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -258,7 +209,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544086+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440707+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -274,7 +225,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544117+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440738+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -290,7 +241,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544140+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440763+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -306,7 +257,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544164+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440792+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -322,7 +273,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544190+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440821+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -338,7 +289,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544238+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440873+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -354,7 +305,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544303+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440920+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -370,23 +321,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544372+00:00",
-      "authenticity_score": 0.5,
-      "source_count": 1,
-      "all_sources": [
-        "TechCrunch AI"
-      ]
-    },
-    {
-      "id": "cc18713dc8ba",
-      "title": "Bumble introduces an AI dating assistant, ‘Bee’",
-      "url": "https://techcrunch.com/2026/03/12/bumble-introduces-an-ai-dating-assistant-bee/",
-      "summary": "Bumble's new AI assistant Bee will move the dating app beyond the swipe by matching people based on compatibility and goals.",
-      "source": "TechCrunch AI",
-      "source_type": "media",
-      "score": 0,
-      "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.544393+00:00",
+      "scraped_at": "2026-03-15T15:52:57.440982+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -402,7 +337,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.712383+00:00",
+      "scraped_at": "2026-03-15T15:52:57.647782+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -418,7 +353,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.713040+00:00",
+      "scraped_at": "2026-03-15T15:52:57.648469+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -434,7 +369,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.713602+00:00",
+      "scraped_at": "2026-03-15T15:52:57.649049+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -450,7 +385,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.714331+00:00",
+      "scraped_at": "2026-03-15T15:52:57.649805+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -466,7 +401,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.714816+00:00",
+      "scraped_at": "2026-03-15T15:52:57.650331+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -482,7 +417,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.715260+00:00",
+      "scraped_at": "2026-03-15T15:52:57.650808+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -498,7 +433,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.715584+00:00",
+      "scraped_at": "2026-03-15T15:52:57.651128+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -514,7 +449,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851295+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781563+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -530,7 +465,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851373+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781640+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -546,7 +481,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851455+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781720+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -562,7 +497,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851504+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781770+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -578,7 +513,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851550+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781817+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -594,7 +529,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851591+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781858+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -610,11 +545,27 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:35.851628+00:00",
+      "scraped_at": "2026-03-15T15:52:57.781894+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
         "MIT Tech Review"
+      ]
+    },
+    {
+      "id": "2a3922d8c959",
+      "title": "AI companies want to harvest improv actors’ skills to train AI on human emotion",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/893931/ai-companies-handshake-improv-actors-training-data",
+      "summary": "If you've got strong creative instincts, the ability to authentically portray emotion, and are capable of staying true to a character's voice throughout a scene, there's a job listing calling for your experience. The catch: You won't be performing in a theater, a film studio, or...",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "score": 0,
+      "date": "2026-03-15",
+      "scraped_at": "2026-03-15T15:52:57.860516+00:00",
+      "authenticity_score": 0.5,
+      "source_count": 1,
+      "all_sources": [
+        "The Verge AI"
       ]
     },
     {
@@ -626,7 +577,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028263+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860596+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -642,7 +593,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028413+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860701+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -658,7 +609,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028462+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860746+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -674,7 +625,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028515+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860797+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -690,7 +641,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028560+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860843+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -706,7 +657,7 @@
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028657+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860943+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
@@ -714,15 +665,15 @@
       ]
     },
     {
-      "id": "c5235995da89",
-      "title": "One of Grammarly’s ‘experts’ is suing the company over its identity-stealing AI feature",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/893451/grammarly-ai-lawsuit-julia-angwin",
-      "summary": "For months, Grammarly has been using the identities of real people (including us) for its \"Expert Review\" AI suggestions without getting their permission, and now it's facing a lawsuit from one of the journalists included, as previously reported by Wired. The class-action...",
+      "id": "eef8ec8218b7",
+      "title": "Perplexity&#8217;s Personal Computer turns your spare Mac into an AI agent",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/893536/perplexitys-personal-computer-turns-your-spare-mac-into-an-ai-agent",
+      "summary": "Perplexity wants to be more than just an answer engine. On Wednesday, it launched Personal Computer, a new AI agent tool that can turn a spare Mac into a locally run AI system, pitching it as \"a digital proxy for you.\" Personal Computer will run 24/7 on a dedicated device on...",
       "source": "The Verge AI",
       "source_type": "media",
       "score": 0,
       "date": "2026-03-15",
-      "scraped_at": "2026-03-15T05:18:36.028740+00:00",
+      "scraped_at": "2026-03-15T15:52:57.860987+00:00",
       "authenticity_score": 0.5,
       "source_count": 1,
       "all_sources": [
